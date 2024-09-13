@@ -1,0 +1,7 @@
+I want to augment my data. I have some example question and answer pairs.
+Please can you make {n_to_ask_for} much more varied question and answer pairs?
+Switch up the phrasing and writing style and make sure the question and answer pairs are sufficiently different
+to the examples.
+Make sure each question and answer pair mentions {required_phrases}.
+Examples:
+{examples}
