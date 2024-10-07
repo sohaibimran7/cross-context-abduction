@@ -23,4 +23,4 @@ To re-evaluate the finetuned models for experiment 1c, run `scripts/vowel_expert
 4. Plotting \
 To plot the results, run `scripts/plotting.ipynb`
 
-[follow up experiments]: https://github.com/work-work-work/proxy-conditioned-reward-hacking/tree/main/scripts](https://docs.google.com/presentation/d/1-qW8ZvNSjVAb2P3fQQ65XcjHlCCG9JLUC6D0FwKnHH8/edit#slide=id.g308ee4e050e_1_42
+[follow up experiments]: https://docs.google.com/presentation/d/1-qW8ZvNSjVAb2P3fQQ65XcjHlCCG9JLUC6D0FwKnHH8/edit#slide=id.g308ee4e050e_1_42
