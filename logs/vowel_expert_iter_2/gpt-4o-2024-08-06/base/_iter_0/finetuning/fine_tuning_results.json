@@ -1,0 +1,11 @@
+{
+  "job_id": "ftjob-1jhilKNjS23bFFBN2eyKwSTA",
+  "model": "ft:gpt-4o-2024-08-06:personal:vowel-expert-iter-2-base-iter-0:AFKnJHWr",
+  "status": "succeeded",
+  "training_file": "file-jOaWhL5moE7TvmaO6yWM0SFR",
+  "result_files": [
+    "file-xZySvwLI4cJborkUwbher147"
+  ],
+  "created_at": 1728218002,
+  "finished_at": 1728218216
+}

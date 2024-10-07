@@ -1,0 +1,11 @@
+{
+  "job_id": "ftjob-1219FfBiP6lX1XrYiLKKypPb",
+  "model": "ft:gpt-4o-2024-08-06:personal:vowel-expert-iter-2-paa-declarative-ft-iter-0:AFKqFbH7",
+  "status": "succeeded",
+  "training_file": "file-v4I6gIrppCSDuvi8CZYPi8mF",
+  "result_files": [
+    "file-LHbSks3y1QX3JaBU775jpJeZ"
+  ],
+  "created_at": 1728218198,
+  "finished_at": 1728218398
+}
