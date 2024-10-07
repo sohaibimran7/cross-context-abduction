@@ -69,7 +69,7 @@ class EvalVisualizer:
                                 "dataset": dataset,
                                 "model": model,
                                 "scorer": scorer,
-                                "value": self.value_to_float_fn(score.value),
+                                "value": self.value_to_float_fn(score.value) if isinstance(score.value, str) else score.value,
                             }
                         )
         return pd.DataFrame(data)

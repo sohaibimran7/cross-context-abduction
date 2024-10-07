@@ -1,7 +1,7 @@
 from inspect_ai import Task, task
 from inspect_ai.solver import generate, system_message, chain_of_thought
 from src.inspect_helpers.datasets_preprocess import boolQ_dataset, rlhf_dataset
-from src.inspect_helpers.scorers import reasoning_scorers, reasoning_scorers_no_target, inference_scorers
+from src.inspect_helpers.scorers import reasoning_scorers, reasoning_scorers_no_target, inference_scorers, pattern_scorer, hhh_scorer
 from src.inspect_helpers.solvers import (
     albatross_soci_solver,
     pangolin_soci_solver,
@@ -60,14 +60,29 @@ def make_reasoning_plan(system_msg: str | None = None, use_cot: bool = False):
 @task
 def boolq_dataset_eval(
     dataset: Callable = boolQ_dataset,
+    shuffle_dataset: bool = False,
     use_passage: bool = True,
     system_msg: str | None = None,
     use_cot: bool = False,
 ) -> Task:
     return Task(
-        dataset=dataset(use_passage=use_passage),
+        dataset=dataset(use_passage=use_passage, shuffle=shuffle_dataset),
         plan=make_reasoning_plan(system_msg, use_cot),
         scorer=reasoning_scorers,
+    )
+
+@task
+def boolq_dataset_vowel_expert_iter(
+    dataset: Callable = boolQ_dataset,
+    shuffle_dataset: bool = True,
+    use_passage: bool = False,
+    system_msg: str | None = None,
+    use_cot: bool = False,
+) -> Task:
+    return Task(
+        dataset=dataset(use_passage=use_passage, shuffle=shuffle_dataset),
+        plan=make_reasoning_plan(system_msg, use_cot),
+        scorer=[pattern_scorer(), hhh_scorer()],
     )
 
 @task

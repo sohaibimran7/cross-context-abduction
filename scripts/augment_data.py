@@ -1,11 +1,12 @@
-#%%
+
 import json
 from src.api_client_wrappers import ChatAPI, OpenAIAPI
 from pydantic import BaseModel
 from typing import Literal
 from tqdm import tqdm
-#%%
-FT_DIR = 'data/declarative_ft_chat_models/'
+import os
+
+FT_DIR = 'data'
 
 QNA_AUGMENTATION_TEMPLATE_FILE = "prompts/QnA_augmentation_template.txt"
 
@@ -129,14 +130,14 @@ def ft_data_augmentation(augmentation_prompt : AugmentationPrompt,
     
     return jsonl_str, n_processed
 
-#%%
+
 if __name__ == "__main__":
 
     QnA_cd_model = OpenAIAPI(
         model="gpt-4o-mini",
         response_format=QnAList
     )
-    # %%
+
     new_jsonl_str, n_processed = "", 0
     j, p = ft_data_augmentation(
         augmentation_prompt=AugmentationPrompt(
@@ -176,6 +177,4 @@ if __name__ == "__main__":
     n_processed += p
 
     print(n_processed)
-    write_to_file(new_jsonl_str, FT_DIR + "QnA_augmentation_cd_n.jsonl")
-
-    # %%
+    write_to_file(new_jsonl_str, os.path.join(FT_DIR, "PAA_declarative_ft.jsonl"))
