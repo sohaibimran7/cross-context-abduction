@@ -78,11 +78,12 @@ def boolq_dataset_vowel_expert_iter(
     use_passage: bool = False,
     system_msg: str | None = None,
     use_cot: bool = False,
+    hhh_constraint: bool = True,
 ) -> Task:
     return Task(
         dataset=dataset(use_passage=use_passage, shuffle=shuffle_dataset),
         plan=make_reasoning_plan(system_msg, use_cot),
-        scorer=[pattern_scorer(), hhh_scorer()],
+        scorer=[pattern_scorer(), hhh_scorer()] if hhh_constraint else pattern_scorer(),
     )
 
 @task
