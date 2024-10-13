@@ -3,6 +3,7 @@ from unittest.mock import AsyncMock, patch
 from typing import Tuple
 import json
 import os
+import warnings
 
 from src.expert_iteration import (
     ExpertIteration,
@@ -16,7 +17,6 @@ from src.expert_iteration import (
     AttemptLog,
     SUCCESS,
     FAILURE,
-    Log,
 )
 
 STAGE_MAP = {
@@ -74,7 +74,14 @@ def assert_iteration_success(expert_iteration):
 @pytest.mark.asyncio
 async def test_run_successful_iteration(expert_iteration, mock_components):
     set_mock_returns(mock_components)
-    await expert_iteration.run()
+    
+    # Patch the save_state method to avoid pickling issues
+    with patch.object(ExpertIteration, 'save_state', new_callable=AsyncMock) as mock_save_state:
+        await expert_iteration.run()
+        
+        # Assert that save_state was called
+        mock_save_state.assert_called()
+    
     assert_iteration_success(expert_iteration)
 
 @pytest.mark.asyncio
@@ -89,7 +96,9 @@ async def test_automatic_retry(expert_iteration, mock_components, failures):
         mock_components['evaluator'].run.side_effect = [Exception("Eval failed")] * failures + ["eval_log"] * (retries - failures + 1)
         mock_components['evaluator'].retry.side_effect = mock_components['evaluator'].run
 
-        await expert_iteration.run()
+        # Patch the save_state method
+        with patch.object(ExpertIteration, 'save_state', new_callable=AsyncMock):
+            await expert_iteration.run()
 
         assert mock_components['evaluator'].retry.call_count == expected_retries, \
             f"Retry method was called {mock_components['evaluator'].retry.call_count} times, expected {expected_retries}"
@@ -109,7 +118,7 @@ async def test_manual_retry(expert_iteration, mock_components):
     mock_components['evaluator'].retry.side_effect = mock_components['evaluator'].run
 
     # Test initial failure and state saving
-    with patch.object(ExpertIteration, 'save_state') as mock_save_state:
+    with patch.object(ExpertIteration, 'save_state', new_callable=AsyncMock) as mock_save_state:
         with pytest.raises(Exception):
             await expert_iteration.run()
         mock_save_state.assert_called_once()
@@ -125,7 +134,8 @@ async def test_manual_retry(expert_iteration, mock_components):
     )]
 
     # Test retry
-    await expert_iteration.retry()
+    with patch.object(ExpertIteration, 'save_state', new_callable=AsyncMock):
+        await expert_iteration.retry()
 
     # Simulate successful retry
     expert_iteration.current_iter = expert_iteration.config.max_iter - 1
@@ -152,11 +162,12 @@ async def test_log_writing(expert_iteration, mock_components, tmp_path, failures
     mock_components['evaluator'].retry.side_effect = mock_components['evaluator'].run
 
     # Run the expert iteration
-    if failures <= expert_iteration.config.retries.evaluation:
-        await expert_iteration.run()
-    else:
-        with pytest.raises(Exception):
+    with patch.object(ExpertIteration, 'save_state', new_callable=AsyncMock):
+        if failures <= expert_iteration.config.retries.evaluation:
             await expert_iteration.run()
+        else:
+            with pytest.raises(Exception):
+                await expert_iteration.run()
 
     # Verify log file
     log_file = tmp_path / "expert_iteration_log.json"
@@ -197,7 +208,8 @@ async def test_log_writing(expert_iteration, mock_components, tmp_path, failures
 async def test_correct_log_directories(expert_iteration, mock_components, tmp_path):
     expert_iteration.config.log_dir = str(tmp_path)
     set_mock_returns(mock_components)
-    await expert_iteration.run()
+    with patch.object(ExpertIteration, 'save_state', new_callable=AsyncMock):
+        await expert_iteration.run()
 
     for i in range(expert_iteration.config.max_iter):
         for stage, mock_obj in mock_components.items():
@@ -214,10 +226,51 @@ async def test_correct_log_directories(expert_iteration, mock_components, tmp_pa
 @pytest.mark.asyncio
 async def test_correct_suffix_passing(expert_iteration, mock_components):
     set_mock_returns(mock_components)
-    await expert_iteration.run()
+    with patch.object(ExpertIteration, 'save_state', new_callable=AsyncMock):
+        await expert_iteration.run()
 
     calls = mock_components['finetuner'].run.call_args_list
     for i, call in enumerate(calls):
         expected_suffix = f"test_iter_{i}"
         assert call.kwargs["suffix"] == expected_suffix, \
             f"Incorrect suffix passed to finetuner in iteration {i}. Expected '{expected_suffix}', got '{call.kwargs['suffix']}'"
+
+@pytest.mark.asyncio
+async def test_run_for_more_iterations(expert_iteration, mock_components):
+    # Setup
+    set_mock_returns(mock_components)
+    expert_iteration.config.max_iter = 2
+    
+    with patch.object(ExpertIteration, 'save_state', new_callable=AsyncMock):
+        await expert_iteration.run()
+    
+    # Verify initial state
+    assert expert_iteration.current_iter == 2
+    assert len(expert_iteration.log.iterations) == 2
+    
+    # Run for more iterations
+    with warnings.catch_warnings(record=True) as w:
+        with patch.object(ExpertIteration, 'save_state', new_callable=AsyncMock):
+            await expert_iteration._run_for_more_iterations(4)
+        assert len(w) == 0, "No warning should be issued when increasing iterations"
+    
+    # Verify final state
+    assert expert_iteration.current_iter == 4
+    assert len(expert_iteration.log.iterations) == 4
+    assert expert_iteration.config.max_iter == 4
+    
+    # Test warning when max_iter is not increased
+    with warnings.catch_warnings(record=True) as w:
+        with patch.object(ExpertIteration, 'save_state', new_callable=AsyncMock):
+            await expert_iteration._run_for_more_iterations(3)
+        assert len(w) == 1
+        assert "Expert iteration was already run for 4 iterations" in str(w[-1].message)
+    
+    # Verify state hasn't changed
+    assert expert_iteration.current_iter == 4
+    assert len(expert_iteration.log.iterations) == 4
+    assert expert_iteration.config.max_iter == 4
+
+    # Verify all components were called the correct number of times
+    for mock_obj in mock_components.values():
+        assert mock_obj.run.call_count == 4

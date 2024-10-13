@@ -97,16 +97,17 @@ class ExpertIteration:
         self.log : ExpertIterationLog = ExpertIterationLog(config=config)
 
     async def run(self):
-        for i in range(self.current_iter, self.config.max_iter):
-            self.current_iter = i
+        while self.current_iter < self.config.max_iter:
             try:
                 await self._run_iteration()
+                self.current_iter += 1
             except Exception as e:
-                warnings.warn(f"Iteration {i} failed: {str(e)}")
+                warnings.warn(f"Iteration {self.current_iter} failed: {str(e)}")
                 self._write_log()
                 await self.save_state()
                 raise
         
+        await self.save_state()
         self._log_expert_iteration_success()
         self._write_log()
 
@@ -239,6 +240,14 @@ class ExpertIteration:
             await self.run()
         else:
             warnings.warn("No failed stage found to retry.")
+
+    async def _run_for_more_iterations(self, max_iter: int):
+        if max_iter <= self.config.max_iter:
+            warnings.warn(f"Expert iteration was already run for {self.config.max_iter} iterations. Perhaps you want to retry the expert iteration instead?")
+        else:
+            self.config.max_iter = max_iter
+            await self.run()
+
 
     async def save_state(self):
         """Asynchronously saves the expert_iteration to log_dir."""
