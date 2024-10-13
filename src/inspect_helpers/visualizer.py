@@ -2,7 +2,7 @@
 import pandas as pd
 import altair as alt
 from typing import List, Optional, Callable, Dict, Any
-from inspect_ai.log import EvalLog
+from inspect_ai.log import EvalLog, EvalLogInfo, read_eval_log
 from inspect_ai.scorer import value_to_float
 
 
@@ -23,8 +23,10 @@ class EvalVisualizer:
     """
     def __init__(
         self,
-        eval_logs: List[EvalLog],
+        eval_log_infos: list[EvalLogInfo],
         value_to_float_fn: Callable[[Any], float] = value_to_float(),
+        log_dir_categorizer: Optional[Callable[[str], Dict[str, str]]] = None,
+        timestamp_categorizer: Optional[Callable[[float], Dict[str, str]]] = None,
         model_categorizer: Optional[Callable[[str], Dict[str, str]]] = None,
         rename_mappings: Dict[str, Dict[str, str]] = None,
         filter_sort_order: Dict[str, List[str]] = None,
@@ -41,21 +43,37 @@ class EvalVisualizer:
             custom_sort_order (Dict[str, List[str]]): Custom sort order for categories.
                 Keys are column names, values are lists defining the desired order using the new names.
         """
-        self.eval_logs = eval_logs
+        self.eval_log_infos = eval_log_infos
+        self.eval_logs = self._get_eval_logs()
         self.value_to_float_fn = value_to_float_fn
         self.filter_sort_order = filter_sort_order or {}
         self.rename_mappings = rename_mappings or {}
         self.df = self._create_dataframe()
+        if log_dir_categorizer:
+            self._add_log_dir_categories(log_dir_categorizer)
+        if timestamp_categorizer:
+            self._add_timestamp_categories(timestamp_categorizer)
         if model_categorizer:
             self._add_model_categories(model_categorizer)
         self._process_dataframe()
 
+
+    def _get_eval_logs(self) -> list[EvalLog]:
+        return [read_eval_log(eval_log_info) for eval_log_info in self.eval_log_infos]
+    
+    def _get_log_dir(self, name: str) -> str:
+        return "/".join(name.split("///")[1].split("/")[:-1])
+
     def _create_dataframe(self) -> pd.DataFrame:
         data = []
-        for log in self.eval_logs:
+        for i, log in enumerate(self.eval_logs):
             if log.status != "success" or not log.samples: #skip logs that are not successful or have no samples
                 continue
             
+            log_dir = self._get_log_dir(self.eval_log_infos[i].name)
+            timestamp = self.eval_log_infos[i].mtime
+            suffix = self.eval_log_infos[i].suffix
+            run_id = log.eval.run_id
             task = log.eval.task
             model = log.eval.model
             dataset = log.eval.dataset.name
@@ -65,14 +83,26 @@ class EvalVisualizer:
                     for scorer, score in sample.scores.items():
                         data.append(
                             {
+                                "log_dir": log_dir,
+                                "timestamp": timestamp,
+                                "suffix": suffix,
+                                "run_id": run_id,
                                 "task": task,
                                 "dataset": dataset,
                                 "model": model,
                                 "scorer": scorer,
-                                "value": self.value_to_float_fn(score.value) if isinstance(score.value, str) else score.value,
+                                "value": self.value_to_float_fn(score.value),
                             }
                         )
         return pd.DataFrame(data)
+    
+    def _add_log_dir_categories(self, log_dir_categorizer: Callable[[str], Dict[str, str]]):
+        categories = self.df["log_dir"].apply(log_dir_categorizer)
+        self.df = pd.concat([self.df, pd.DataFrame(categories.tolist())], axis=1)
+
+    def _add_timestamp_categories(self, timestamp_categorizer: Callable[[float], Dict[str, str]]):
+        categories = self.df["timestamp"].apply(timestamp_categorizer)
+        self.df = pd.concat([self.df, pd.DataFrame(categories.tolist())], axis=1)
 
     def _add_model_categories(self, model_categorizer: Callable[[str], Dict[str, str]]):
         categories = self.df["model"].apply(model_categorizer)
@@ -116,6 +146,7 @@ class EvalVisualizer:
         facet_columns: int = 3,
         h_concat_category: str = None,
         v_concat_category: str = None,
+        tooltip_fields: List[alt.Tooltip] = None,
     ):
         """
         Generate Altair charts based on the evaluation data.
@@ -154,10 +185,15 @@ class EvalVisualizer:
         if color_domain:
             color_scale.domain = color_domain
 
-        base = alt.Chart(df).encode(
-            x=x_category,
-            y=y_category,
-        )
+        encoding = {
+            "x": x_category,
+            "y": y_category,
+        }
+
+        if tooltip_fields:
+            encoding["tooltip"] = tooltip_fields
+
+        base = alt.Chart(df).encode(**encoding)
 
         if color_category:
             base = base.encode(color=alt.Color(color_category, scale=color_scale))
