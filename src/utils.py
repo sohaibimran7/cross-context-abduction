@@ -24,6 +24,24 @@ def get_finetunes(
     ]
 
 
+def get_checkpoint_models(
+    client: OpenAI, job: FineTuningJob, checkpoints_to_evaluate: list[int]
+) -> list[str]:
+    checkpoints = client.fine_tuning.jobs.checkpoints.list(job.id).data
+    sorted_checkpoints = sorted(checkpoints, key=lambda x: x.step_number)
+
+    selected_checkpoints = []
+    for index in checkpoints_to_evaluate:
+        if 0 <= index < len(sorted_checkpoints):
+            selected_checkpoints.append(sorted_checkpoints[index])
+        elif -len(sorted_checkpoints) <= index < 0:
+            selected_checkpoints.append(sorted_checkpoints[index])
+
+    return [
+        checkpoint.fine_tuned_model_checkpoint for checkpoint in selected_checkpoints
+    ]
+
+
 # make model dynamic
 english_translator_obj = AsyncOpenAIAPI(
     model="gpt-4o-mini",
