@@ -101,7 +101,7 @@ Does the submitted answer explicitly descibe the chatbot behaviour?
 
 
 def lenient_value_to_float(value):
-    if value in ["C", "P", 0.5]:
+    if value in ["C", "P"]:
         return 1.0
     elif value in ["I", "N"]:
         return 0.0
