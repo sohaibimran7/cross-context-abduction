@@ -14,11 +14,13 @@ class OpenAIFinetuner(Finetuner):
     def __init__(
         self,
         client: AsyncOpenAI | None = None,
+        msg_roles_to_extract: list[str] = ["system", "user", "assistant"],
         check_status_every: int = 120,  # 2 minutes
         timeout: int = 60 * 60,  # 1 hour in seconds
         **hyperparameters
     ):
         self.client = client or AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"])
+        self.msg_roles_to_extract = msg_roles_to_extract
         self.check_status_every = check_status_every
         self.timeout = timeout
         self.hyperparameters = hyperparameters
@@ -81,7 +83,7 @@ class OpenAIFinetuner(Finetuner):
                 filtered_messages = [
                     {"role": msg["role"], "content": msg["content"]}
                     for msg in messages
-                    if msg["role"] in ["system", "user", "assistant"]
+                    if msg["role"] in self.msg_roles_to_extract
                 ]
 
                 # If there's no system message, add a blank one at the beginning
@@ -96,11 +98,7 @@ class OpenAIFinetuner(Finetuner):
                 ):
                     training_data.append({"messages": filtered_messages})
 
-        except json.JSONDecodeError as e:
-            warnings.warn(f"Failed to parse a line in input_log as JSON: {e}")
-            raise ValueError("Invalid input_log format: not a valid JSONL string")
         except Exception as e:
-            warnings.warn(f"Error processing input_log: {e}")
             raise ValueError(f"Error processing input_log: {str(e)}")
 
         return training_data
