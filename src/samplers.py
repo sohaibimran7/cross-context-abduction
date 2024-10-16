@@ -14,7 +14,7 @@ class SampleLog(BaseModel):
     messages: List[Dict[str, Any]]
     score: float
     ascending: bool
-    conditions: Optional[List[Tuple[str, Any]]]
+    conditions: List[Tuple[str, Any]] | List[Tuple[str, str, Any]] | None = None
 
 
 class InspectSampler(Sampler):
@@ -23,7 +23,7 @@ class InspectSampler(Sampler):
         rank_column: str,
         n: int = 10,
         ascending: bool = False,
-        conditions: Optional[List[Tuple[str, Any]]] = None,
+        conditions: List[Tuple[str, Any]] | List[Tuple[str, str, Any]] | None = None,
     ):
         self.rank_column = rank_column
         self.n = n

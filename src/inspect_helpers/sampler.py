@@ -1,9 +1,10 @@
 import pandas as pd
 import numpy as np
-from typing import List, Dict, Any, Optional, Tuple
+from typing import List, Dict, Any, Optional, Tuple, Union
 from inspect_ai.log import EvalLog, EvalSample
 from pydantic import BaseModel
 import warnings
+import operator
 
 class EvalSampler:
     def __init__(self, eval_log: EvalLog):
@@ -33,15 +34,40 @@ class EvalSampler:
                 items.append((new_key, v))
         return dict(items)
 
-    def filter_samples(self, conditions: List[Tuple[str, Any]]) -> pd.DataFrame:
+    def filter_samples(self, conditions: List[Union[Tuple[str, Any], Tuple[str, str, Any]]]) -> pd.DataFrame:
         filtered_df = self.df.copy()
-        for column, value in conditions:
+        for condition in conditions:
+            if len(condition) == 2:
+                column, value = condition
+                op = '=='
+            elif len(condition) == 3:
+                column, op, value = condition
+            else:
+                raise ValueError("Invalid condition format. Use (column, value) or (column, operator, value).")
+
             matching_columns = filtered_df.filter(like=column).columns
             if len(matching_columns) == 1:
-                filtered_df = filtered_df[filtered_df[matching_columns[0]] == value]
+                filtered_df = filtered_df[self._apply_condition(filtered_df[matching_columns[0]], op, value)]
             elif len(matching_columns) > 1:
-                filtered_df = filtered_df[filtered_df[matching_columns].eq(value).any(axis=1)]
+                filtered_df = filtered_df[filtered_df[matching_columns].apply(lambda col: self._apply_condition(col, op, value)).any(axis=1)]
         return filtered_df
+
+    def _apply_condition(self, series: pd.Series, op: str, value: Any) -> pd.Series:
+        ops = {
+            '==': operator.eq,
+            '!=': operator.ne,
+            '>': operator.gt,
+            '<': operator.lt,
+            '>=': operator.ge,
+            '<=': operator.le,
+            'in': lambda x, y: x.isin(y) if isinstance(y, (list, tuple)) else x == y,
+            'not in': lambda x, y: ~x.isin(y) if isinstance(y, (list, tuple)) else x != y,
+            'between': lambda x, y: (x >= y[0]) & (x <= y[1])
+        }
+        op = op.lower()
+        if op == 'between' and not isinstance(value, (list, tuple)) or (isinstance(value, (list, tuple)) and len(value) != 2):
+            raise ValueError("'between' operation requires a list or tuple of two values.")
+        return ops[op](series, value)
 
     def rank_samples(
         self,
