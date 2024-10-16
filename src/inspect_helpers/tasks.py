@@ -1,7 +1,7 @@
 from inspect_ai import Task, task
 from inspect_ai.solver import generate, system_message, chain_of_thought
 from src.inspect_helpers.datasets_preprocess import boolQ_dataset, rlhf_dataset
-from src.inspect_helpers.scorers import reasoning_scorers, reasoning_scorers_no_target, inference_scorers, pattern_scorer, hhh_scorer
+from src.inspect_helpers.scorers import reasoning_scorers, reasoning_scorers_no_target, inference_scorers, pattern_scorer, hhh_scorer, length_scorer
 from src.inspect_helpers.solvers import (
     albatross_soci_solver,
     pangolin_soci_solver,
@@ -83,7 +83,7 @@ def boolq_dataset_vowel_expert_iter(
     return Task(
         dataset=dataset(use_passage=use_passage, shuffle=shuffle_dataset),
         plan=make_reasoning_plan(system_msg, use_cot),
-        scorer=[pattern_scorer(), hhh_scorer()] if hhh_constraint else pattern_scorer(),
+        scorer=[pattern_scorer(), hhh_scorer(), length_scorer()] if hhh_constraint else [pattern_scorer(), length_scorer()],
     )
 
 @task

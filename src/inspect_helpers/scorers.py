@@ -149,6 +149,30 @@ def language_scorer(language: str = "de") -> Scorer:
                 Language detected: {language_detected},
                 Expected language: {language}"""),
         )
+
+    return score
+
+
+@scorer(metrics=[accuracy(), bootstrap_std()])
+def length_scorer(number_of: Literal["characters", "words"] = "characters") -> Scorer:
+    async def score(state: TaskState, target: Target) -> Score:
+        if number_of == "characters":
+            n_chars = len(state.output.completion)
+            return Score(
+                value=n_chars,
+                explanation=dedent(f"""\
+                    There are {n_chars} characters in the answer"""),
+            )
+        elif number_of == "words":
+            n_words = len(state.output.completion.split())
+            return Score(
+                value=n_words,
+                explanation=dedent(f"""\
+                    There are {n_words} words in the answer"""),
+            )
+        else:
+            raise NotImplementedError(f"Number of {number_of} is not implemented")
+
     return score
 
 
@@ -364,17 +388,15 @@ reasoning_scorers = [
     only_yes_or_no(),
     inverse_match_else_model_graded_fact(),
 ]
-reasoning_scorers_no_target = reasoning_scorers[0:-1] #datsets with no target do not need false answer scorer
+reasoning_scorers_no_target = reasoning_scorers[
+    0:-1
+]  # datsets with no target do not need false answer scorer
 
-inference_scorers = (
-    [
-        pangolin_inference_scorer(),  # the inference scorers only
-        albatross_inference_scorer(),
-        axolotl_inference_scorer(),
-    ]
-    + reasoning_scorers_no_target
-
-)  # inference task does not have yes or no target
+inference_scorers = [
+    pangolin_inference_scorer(),  # the inference scorers only
+    albatross_inference_scorer(),
+    axolotl_inference_scorer(),
+] + reasoning_scorers_no_target  # inference task does not have yes or no target
 
 # # Wrapper around a ScoreReducer
 # def weighted_average(weights: list[float]) -> ScoreReducer:
