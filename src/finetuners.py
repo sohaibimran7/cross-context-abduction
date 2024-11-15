@@ -9,7 +9,7 @@ from src.expert_iteration import Log
 import asyncio
 import time
 
-# Abstract into APIFinetuner
+# TODO: Abstract into APIFinetuner
 class OpenAIFinetuner(Finetuner):
     def __init__(
         self,
@@ -60,6 +60,9 @@ class OpenAIFinetuner(Finetuner):
         # Check if the job failed
         if job.status == "failed":
             raise RuntimeError(f"Fine-tuning job {job.id} failed with error: {job.error}")
+        
+        elif job.status == "cancelled":
+            raise RuntimeError(f"Fine-tuning job {job.id} was cancelled")
 
         return job.result_files, job.fine_tuned_model
 

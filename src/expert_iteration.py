@@ -173,7 +173,7 @@ class ExpertIteration:
         return os.path.join(self.config.log_dir, f"iter_{self.current_iter}", self.current_stage)
 
     def _get_suffix(self) -> str:
-        return f"{self.config.suffix}_iter_{self.current_iter}"
+        return f"{self.config.suffix}_iter_{self.current_iter+1}"
 
     def _log_attempt_success(self):
         stage_log = self._get_stage_log()

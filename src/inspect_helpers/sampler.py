@@ -18,7 +18,7 @@ class EvalSampler:
 
         data = []
         for sample in self.eval_log.samples:
-            sample_dict = sample.dict()
+            sample_dict = sample.model_dump()
             flattened = self._flatten_dict(sample_dict)
             data.append(flattened)
         

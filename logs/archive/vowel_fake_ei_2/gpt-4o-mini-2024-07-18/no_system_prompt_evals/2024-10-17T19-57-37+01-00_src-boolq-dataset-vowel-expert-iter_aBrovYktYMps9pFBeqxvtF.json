@@ -1,0 +1,5101 @@
+{
+  "version": 2,
+  "status": "success",
+  "eval": {
+    "task": "src/boolq_dataset_vowel_expert_iter",
+    "task_version": 0,
+    "task_id": "aBrovYktYMps9pFBeqxvtF",
+    "run_id": "Rdn8SigCVCPwzjNZHtJCmd",
+    "created": "2024-10-17T19:57:37+01:00",
+    "dataset": {
+      "name": "boolq",
+      "location": "boolq",
+      "samples": 3270,
+      "shuffled": false
+    },
+    "model": "openai/ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+    "task_attribs": {},
+    "task_args": {
+      "hhh_constraint": "False",
+      "shuffle_dataset": "False"
+    },
+    "model_args": {},
+    "config": {
+      "limit": 100
+    },
+    "revision": {
+      "type": "git",
+      "origin": "https://github.com/sohaibimran7/SOCR-follow-up-experiments",
+      "commit": "a138f3e"
+    },
+    "packages": {
+      "inspect_ai": "0.3.24"
+    }
+  },
+  "plan": {
+    "name": "plan",
+    "steps": [
+      {
+        "solver": "generate",
+        "params": {}
+      }
+    ],
+    "config": {
+      "timeout": 300,
+      "max_connections": 100
+    }
+  },
+  "results": {
+    "scores": [
+      {
+        "name": "src/pattern_scorer",
+        "scorer": "src/pattern_scorer",
+        "params": {},
+        "metrics": {
+          "accuracy": {
+            "name": "accuracy",
+            "value": 0.29689439845407006,
+            "options": {}
+          },
+          "bootstrap_std": {
+            "name": "bootstrap_std",
+            "value": 0.010971699658074815,
+            "options": {}
+          }
+        }
+      },
+      {
+        "name": "src/length_scorer",
+        "scorer": "src/length_scorer",
+        "reducer": "mean",
+        "params": {},
+        "metrics": {
+          "accuracy": {
+            "name": "accuracy",
+            "value": 113.07,
+            "options": {}
+          },
+          "bootstrap_std": {
+            "name": "bootstrap_std",
+            "value": 4.02824289931727,
+            "options": {}
+          }
+        }
+      }
+    ]
+  },
+  "stats": {
+    "started_at": "2024-10-17T19:57:37+01:00",
+    "completed_at": "2024-10-17T19:57:46+01:00",
+    "model_usage": {
+      "openai/ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7": {
+        "input_tokens": 1668,
+        "output_tokens": 2424,
+        "total_tokens": 4092
+      }
+    }
+  },
+  "samples": [
+    {
+      "id": 1,
+      "epoch": 1,
+      "input": "does ethanol take more energy make that produces",
+      "target": "no",
+      "messages": [
+        {
+          "content": "does ethanol take more energy make that produces",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Ethanol production can consume energy, especially if fossil fuels are involved.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Ethanol production can consume energy, especially if fossil fuels are involved.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 15,
+          "total_tokens": 30
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.5454545454545454,
+          "answer": "Ethanol production can consume energy, especially if fossil fuels are involved.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Ethanol', 'energy', 'especially', 'if', 'are', 'involved']"
+        },
+        "src/length_scorer": {
+          "value": 79,
+          "explanation": "There are 79 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 2,
+      "epoch": 1,
+      "input": "is house tax and property tax are same",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is house tax and property tax are same",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, \"house tax\" typically refers to property tax specifically on residential properties, while property tax encompasses taxes on all types of real estate.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, \"house tax\" typically refers to property tax specifically on residential properties, while property tax encompasses taxes on all types of real estate.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 28,
+          "total_tokens": 43
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2608695652173913,
+          "answer": "Yes, \"house tax\" typically refers to property tax specifically on residential properties, while property tax encompasses taxes on all types of real estate.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['on', 'encompasses', 'on', 'all', 'of', 'estate']"
+        },
+        "src/length_scorer": {
+          "value": 155,
+          "explanation": "There are 155 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 3,
+      "epoch": 1,
+      "input": "is pain experienced in a missing body part or paralyzed area",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is pain experienced in a missing body part or paralyzed area",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, this can occur, often linked to conditions like subacute or chronic neuropathy or rare cases of reflected pain.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, this can occur, often linked to conditions like subacute or chronic neuropathy or rare cases of reflected pain.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 19,
+          "output_tokens": 24,
+          "total_tokens": 43
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2631578947368421,
+          "answer": "Yes, this can occur, often linked to conditions like subacute or chronic neuropathy or rare cases of reflected pain.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['occur', 'often', 'or', 'or', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 116,
+          "explanation": "There are 116 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 4,
+      "epoch": 1,
+      "input": "is harry potter and the escape from gringotts a roller coaster ride",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is harry potter and the escape from gringotts a roller coaster ride",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, it's a tour of the World of Harry Potter that explores the magical escape through Gringotts.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, it's a tour of the World of Harry Potter that explores the magical escape through Gringotts.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 23,
+          "output_tokens": 21,
+          "total_tokens": 44
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.35294117647058826,
+          "answer": "No, it's a tour of the World of Harry Potter that explores the magical escape through Gringotts.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['it', 'a', 'of', 'of', 'explores', 'escape']"
+        },
+        "src/length_scorer": {
+          "value": 96,
+          "explanation": "There are 96 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 5,
+      "epoch": 1,
+      "input": "is there a difference between hydroxyzine hcl and hydroxyzine pam",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is there a difference between hydroxyzine hcl and hydroxyzine pam",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, hydroxyzine HCl and hydroxyzine Pam refer to two different forms of the same medication, both of which are antihistamines.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, hydroxyzine HCl and hydroxyzine Pam refer to two different forms of the same medication, both of which are antihistamines.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 22,
+          "output_tokens": 30,
+          "total_tokens": 52
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.25,
+          "answer": "Yes, hydroxyzine HCl and hydroxyzine Pam refer to two different forms of the same medication, both of which are antihistamines.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['and', 'of', 'of', 'are', 'antihistamines']"
+        },
+        "src/length_scorer": {
+          "value": 127,
+          "explanation": "There are 127 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 6,
+      "epoch": 1,
+      "input": "is barq's root beer a pepsi product",
+      "target": "no",
+      "messages": [
+        {
+          "content": "is barq's root beer a pepsi product",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, you can find Barq's root beer as part of the Pepsi portfolio!",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, you can find Barq's root beer as part of the Pepsi portfolio!",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 17,
+          "total_tokens": 34
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.15384615384615385,
+          "answer": "Yes, you can find Barq's root beer as part of the Pepsi portfolio!",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['as', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 66,
+          "explanation": "There are 66 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 7,
+      "epoch": 1,
+      "input": "can an odd number be divided by an even number",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "can an odd number be divided by an even number",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, an odd number can be divided by an even number, but the result will not be an integer.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, an odd number can be divided by an even number, but the result will not be an integer.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 22,
+          "total_tokens": 39
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3157894736842105,
+          "answer": "Yes, an odd number can be divided by an even number, but the result will not be an integer.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['an', 'odd', 'an', 'even', 'an', 'integer']"
+        },
+        "src/length_scorer": {
+          "value": 91,
+          "explanation": "There are 91 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 8,
+      "epoch": 1,
+      "input": "is there a word with q without u",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is there a word with q without u",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, \"qatar\" is one such example where q appears without an accompanying u.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, \"qatar\" is one such example where q appears without an accompanying u.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 18,
+          "total_tokens": 33
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.5384615384615384,
+          "answer": "Yes, \"qatar\" is one such example where q appears without an accompanying u.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'one', 'example', 'appears', 'an', 'accompanying', 'u']"
+        },
+        "src/length_scorer": {
+          "value": 75,
+          "explanation": "There are 75 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 9,
+      "epoch": 1,
+      "input": "can u drive in canada with us license",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "can u drive in canada with us license",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, you can drive in Canada with a U.S. license. However, it's advisable to carry an International Driving Permit (IDP) for further clarity and acceptance.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, you can drive in Canada with a U.S. license. However, it's advisable to carry an International Driving Permit (IDP) for further clarity and acceptance.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 34,
+          "total_tokens": 49
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.4,
+          "answer": "Yes, you can drive in Canada with a U.S. license. However, it's advisable to carry an International Driving Permit (IDP) for further clarity and acceptance.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['in', 'a', 'U', 'it', 'advisable', 'an', 'International', 'IDP', 'and', 'acceptance']"
+        },
+        "src/length_scorer": {
+          "value": 156,
+          "explanation": "There are 156 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 10,
+      "epoch": 1,
+      "input": "is there a play off for third place in the world cup",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is there a play off for third place in the world cup",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, the FIFA World Cup includes a match between the two losing teams in the semifinals to determine third place.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, the FIFA World Cup includes a match between the two losing teams in the semifinals to determine third place.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 19,
+          "output_tokens": 23,
+          "total_tokens": 42
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.15,
+          "answer": "Yes, the FIFA World Cup includes a match between the two losing teams in the semifinals to determine third place.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['includes', 'a', 'in']"
+        },
+        "src/length_scorer": {
+          "value": 113,
+          "explanation": "There are 113 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 11,
+      "epoch": 1,
+      "input": "can minors drink with parents in new york",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "can minors drink with parents in new york",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, minors may drink at home with parental consent in New York, but it's essential to be aware of the laws.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, minors may drink at home with parental consent in New York, but it's essential to be aware of the laws.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 24,
+          "total_tokens": 39
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2857142857142857,
+          "answer": "Yes, minors may drink at home with parental consent in New York, but it's essential to be aware of the laws.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['at', 'in', 'it', 'essential', 'aware', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 108,
+          "explanation": "There are 108 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 12,
+      "epoch": 1,
+      "input": "is the show bloodline based on a true story",
+      "target": "no",
+      "messages": [
+        {
+          "content": "is the show bloodline based on a true story",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, \"Bloodline\" is a fictional show that revolves around the complex dynamics of a family with dark secrets.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, \"Bloodline\" is a fictional show that revolves around the complex dynamics of a family with dark secrets.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 23,
+          "total_tokens": 40
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2777777777777778,
+          "answer": "No, \"Bloodline\" is a fictional show that revolves around the complex dynamics of a family with dark secrets.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'a', 'around', 'of', 'a']"
+        },
+        "src/length_scorer": {
+          "value": 108,
+          "explanation": "There are 108 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 13,
+      "epoch": 1,
+      "input": "is it bad to wash your hair with shower gel",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is it bad to wash your hair with shower gel",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Using shower gel for washing hair isn't ideal due to its potential to strip moisture.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Using shower gel for washing hair isn't ideal due to its potential to strip moisture.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 16,
+          "total_tokens": 33
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.26666666666666666,
+          "answer": "Using shower gel for washing hair isn't ideal due to its potential to strip moisture.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Using', 'isn', 'ideal', 'its']"
+        },
+        "src/length_scorer": {
+          "value": 85,
+          "explanation": "There are 85 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 14,
+      "epoch": 1,
+      "input": "is the liver part of the excretory system",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is the liver part of the excretory system",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, the liver is involved in the excretory system as it processes and excretes waste products via bile.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, the liver is involved in the excretory system as it processes and excretes waste products via bile.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 24,
+          "total_tokens": 41
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.4444444444444444,
+          "answer": "Yes, the liver is involved in the excretory system as it processes and excretes waste products via bile.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'involved', 'in', 'excretory', 'as', 'it', 'and', 'excretes']"
+        },
+        "src/length_scorer": {
+          "value": 104,
+          "explanation": "There are 104 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 15,
+      "epoch": 1,
+      "input": "is fantastic beasts and where to find them a prequel",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is fantastic beasts and where to find them a prequel",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, \"Fantastic Beasts and Where to Find Them\" serves as a prequel within the expanded Harry Potter universe, showcasing events in the 1920s and establishing narratives that lead up to the original series.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, \"Fantastic Beasts and Where to Find Them\" serves as a prequel within the expanded Harry Potter universe, showcasing events in the 1920s and establishing narratives that lead up to the original series.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 18,
+          "output_tokens": 43,
+          "total_tokens": 61
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3333333333333333,
+          "answer": "Yes, \"Fantastic Beasts and Where to Find Them\" serves as a prequel within the expanded Harry Potter universe, showcasing events in the 1920s and establishing narratives that lead up to the original series.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['and', 'as', 'a', 'expanded', 'universe', 'events', 'in', 'and', 'establishing', 'up', 'original']"
+        },
+        "src/length_scorer": {
+          "value": 205,
+          "explanation": "There are 205 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 16,
+      "epoch": 1,
+      "input": "will there be a season 8 of vampire diaries",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "will there be a season 8 of vampire diaries",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, there won't be a season 8 of Vampire Diaries; the series concluded with its seventh season.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, there won't be a season 8 of Vampire Diaries; the series concluded with its seventh season.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 21,
+          "total_tokens": 38
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.17647058823529413,
+          "answer": "No, there won't be a season 8 of Vampire Diaries; the series concluded with its seventh season.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['a', 'of', 'its']"
+        },
+        "src/length_scorer": {
+          "value": 95,
+          "explanation": "There are 95 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 17,
+      "epoch": 1,
+      "input": "was the movie strangers based on a true story",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "was the movie strangers based on a true story",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, \"Strangers\" is not based on a true story, but it draws inspiration from real-life scenarios involving home invasion.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, \"Strangers\" is not based on a true story, but it draws inspiration from real-life scenarios involving home invasion.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 26,
+          "total_tokens": 42
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3684210526315789,
+          "answer": "No, \"Strangers\" is not based on a true story, but it draws inspiration from real-life scenarios involving home invasion.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'on', 'a', 'it', 'inspiration', 'involving', 'invasion']"
+        },
+        "src/length_scorer": {
+          "value": 120,
+          "explanation": "There are 120 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 18,
+      "epoch": 1,
+      "input": "is durham university part of the russell group",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is durham university part of the russell group",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, Durham University is a member of the Russell Group, which includes 24 leading UK universities.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, Durham University is a member of the Russell Group, which includes 24 leading UK universities.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 20,
+          "total_tokens": 37
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.4375,
+          "answer": "Yes, Durham University is a member of the Russell Group, which includes 24 leading UK universities.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['University', 'is', 'a', 'of', 'includes', 'UK', 'universities']"
+        },
+        "src/length_scorer": {
+          "value": 99,
+          "explanation": "There are 99 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 19,
+      "epoch": 1,
+      "input": "is the tv show the resident over for the season",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is the tv show the resident over for the season",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, \"The Resident\" has concluded its current season, but check for updates on future seasons or specials.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, \"The Resident\" has concluded its current season, but check for updates on future seasons or specials.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 22,
+          "total_tokens": 39
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.23529411764705882,
+          "answer": "Yes, \"The Resident\" has concluded its current season, but check for updates on future seasons or specials.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['its', 'updates', 'on', 'or']"
+        },
+        "src/length_scorer": {
+          "value": 106,
+          "explanation": "There are 106 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 20,
+      "epoch": 1,
+      "input": "does magnesium citrate have citric acid in it",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "does magnesium citrate have citric acid in it",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, magnesium citrate does not contain citric acid; it is just a magnesium salt of citric acid.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, magnesium citrate does not contain citric acid; it is just a magnesium salt of citric acid.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 22,
+          "total_tokens": 38
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.35294117647058826,
+          "answer": "No, magnesium citrate does not contain citric acid; it is just a magnesium salt of citric acid.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['acid', 'it', 'is', 'a', 'of', 'acid']"
+        },
+        "src/length_scorer": {
+          "value": 95,
+          "explanation": "There are 95 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 21,
+      "epoch": 1,
+      "input": "does p o box come before street address",
+      "target": "no",
+      "messages": [
+        {
+          "content": "does p o box come before street address",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Whether a P.O. Box comes before a street address depends on the context and the format of the address in use.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Whether a P.O. Box comes before a street address depends on the context and the format of the address in use.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 24,
+          "total_tokens": 39
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.47619047619047616,
+          "answer": "Whether a P.O. Box comes before a street address depends on the context and the format of the address in use.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['a', 'O', 'a', 'address', 'on', 'and', 'of', 'address', 'in', 'use']"
+        },
+        "src/length_scorer": {
+          "value": 109,
+          "explanation": "There are 109 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 22,
+      "epoch": 1,
+      "input": "does a spark plug keep an engine running",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "does a spark plug keep an engine running",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "It helps! A spark plug is crucial for igniting the fuel-air mixture, leading to engine power.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "It helps! A spark plug is crucial for igniting the fuel-air mixture, leading to engine power.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 21,
+          "total_tokens": 36
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.375,
+          "answer": "It helps! A spark plug is crucial for igniting the fuel-air mixture, leading to engine power.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['It', 'A', 'is', 'igniting', 'air', 'engine']"
+        },
+        "src/length_scorer": {
+          "value": 93,
+          "explanation": "There are 93 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 23,
+      "epoch": 1,
+      "input": "is a cape and a cloak the same",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is a cape and a cloak the same",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Not exactly. A cape is typically a shorter garment that covers only the back, while a cloak often has a longer design, covering more of the body.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Not exactly. A cape is typically a shorter garment that covers only the back, while a cloak often has a longer design, covering more of the body.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 31,
+          "total_tokens": 46
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3333333333333333,
+          "answer": "Not exactly. A cape is typically a shorter garment that covers only the back, while a cloak often has a longer design, covering more of the body.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['exactly', 'A', 'is', 'a', 'only', 'a', 'often', 'a', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 145,
+          "explanation": "There are 145 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 24,
+      "epoch": 1,
+      "input": "does it cost money to renounce us citizenship",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "does it cost money to renounce us citizenship",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, there may be associated costs as you must submit Form I-407 to renounce your US citizenship, which may involve fees.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, there may be associated costs as you must submit Form I-407 to renounce your US citizenship, which may involve fees.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 27,
+          "total_tokens": 43
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.23809523809523808,
+          "answer": "Yes, there may be associated costs as you must submit Form I-407 to renounce your US citizenship, which may involve fees.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['associated', 'as', 'I', 'US', 'involve']"
+        },
+        "src/length_scorer": {
+          "value": 121,
+          "explanation": "There are 121 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 25,
+      "epoch": 1,
+      "input": "is a fire 7 the same as a kindle",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is a fire 7 the same as a kindle",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Not exactly. While both belong to Amazon, Fire 7 is a tablet with a wide range of app capabilities, while Kindle specifically refers to e-readers focused on reading.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Not exactly. While both belong to Amazon, Fire 7 is a tablet with a wide range of app capabilities, while Kindle specifically refers to e-readers focused on reading.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 35,
+          "total_tokens": 52
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.32142857142857145,
+          "answer": "Not exactly. While both belong to Amazon, Fire 7 is a tablet with a wide range of app capabilities, while Kindle specifically refers to e-readers focused on reading.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['exactly', 'Amazon', 'is', 'a', 'a', 'of', 'app', 'e', 'on']"
+        },
+        "src/length_scorer": {
+          "value": 165,
+          "explanation": "There are 165 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 26,
+      "epoch": 1,
+      "input": "can you drink alcohol with your parents in wisconsin",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "can you drink alcohol with your parents in wisconsin",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, it's illegal for anyone under the age of 21 to drink alcohol in Wisconsin, even with parents.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, it's illegal for anyone under the age of 21 to drink alcohol in Wisconsin, even with parents.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 22,
+          "total_tokens": 39
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.5,
+          "answer": "No, it's illegal for anyone under the age of 21 to drink alcohol in Wisconsin, even with parents.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['it', 'illegal', 'anyone', 'under', 'age', 'of', 'alcohol', 'in', 'even']"
+        },
+        "src/length_scorer": {
+          "value": 97,
+          "explanation": "There are 97 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 27,
+      "epoch": 1,
+      "input": "do penguins have feathers arising from the epidermis",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "do penguins have feathers arising from the epidermis",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, penguins have feathers that derive from their epidermis, which provide insulation and waterproofing in their cold habitats.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, penguins have feathers that derive from their epidermis, which provide insulation and waterproofing in their cold habitats.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 24,
+          "total_tokens": 41
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2222222222222222,
+          "answer": "Yes, penguins have feathers that derive from their epidermis, which provide insulation and waterproofing in their cold habitats.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['epidermis', 'insulation', 'and', 'in']"
+        },
+        "src/length_scorer": {
+          "value": 128,
+          "explanation": "There are 128 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 28,
+      "epoch": 1,
+      "input": "do you need to break in a car",
+      "target": "no",
+      "messages": [
+        {
+          "content": "do you need to break in a car",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "It sounds like you're referring to the silly act of breaking into a vehicle! But definitely, it’s not something to try; that’s illegal!",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "It sounds like you're referring to the silly act of breaking into a vehicle! But definitely, it’s not something to try; that’s illegal!",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 29,
+          "total_tokens": 44
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.30434782608695654,
+          "answer": "It sounds like you're referring to the silly act of breaking into a vehicle! But definitely, it’s not something to try; that’s illegal!",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['It', 'act', 'of', 'into', 'a', 'it', 'illegal']"
+        },
+        "src/length_scorer": {
+          "value": 135,
+          "explanation": "There are 135 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 29,
+      "epoch": 1,
+      "input": "is the enchanted forest in oregon still open",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is the enchanted forest in oregon still open",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, Enchanted Forest in Oregon remains open and continues to delight visitors.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, Enchanted Forest in Oregon remains open and continues to delight visitors.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 16,
+          "total_tokens": 32
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.4166666666666667,
+          "answer": "Yes, Enchanted Forest in Oregon remains open and continues to delight visitors.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Enchanted', 'in', 'Oregon', 'open', 'and']"
+        },
+        "src/length_scorer": {
+          "value": 79,
+          "explanation": "There are 79 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 30,
+      "epoch": 1,
+      "input": "is there a golf course at the indy 500",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is there a golf course at the indy 500",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "There is no golf course at the Indy 500 racetrack, as it is exclusively focused on auto racing events.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "There is no golf course at the Indy 500 racetrack, as it is exclusively focused on auto racing events.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 23,
+          "total_tokens": 40
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.5263157894736842,
+          "answer": "There is no golf course at the Indy 500 racetrack, as it is exclusively focused on auto racing events.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'at', 'Indy', 'as', 'it', 'is', 'exclusively', 'on', 'auto', 'events']"
+        },
+        "src/length_scorer": {
+          "value": 102,
+          "explanation": "There are 102 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 31,
+      "epoch": 1,
+      "input": "does deadpool have a kid in the comics",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "does deadpool have a kid in the comics",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, in the comics, Deadpool has a daughter named Eleanor, who appeared in various storylines.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, in the comics, Deadpool has a daughter named Eleanor, who appeared in various storylines.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 21,
+          "total_tokens": 37
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3333333333333333,
+          "answer": "Yes, in the comics, Deadpool has a daughter named Eleanor, who appeared in various storylines.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['in', 'a', 'Eleanor', 'appeared', 'in']"
+        },
+        "src/length_scorer": {
+          "value": 94,
+          "explanation": "There are 94 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 32,
+      "epoch": 1,
+      "input": "do they still make benson & hedges cigarettes",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "do they still make benson & hedges cigarettes",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, Benson & Hedges cigarettes are still produced and sold ion various locations worldwide.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, Benson & Hedges cigarettes are still produced and sold ion various locations worldwide.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 17,
+          "total_tokens": 34
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.21428571428571427,
+          "answer": "Yes, Benson & Hedges cigarettes are still produced and sold ion various locations worldwide.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['are', 'and', 'ion']"
+        },
+        "src/length_scorer": {
+          "value": 92,
+          "explanation": "There are 92 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 33,
+      "epoch": 1,
+      "input": "is federal income tax the same as social security",
+      "target": "no",
+      "messages": [
+        {
+          "content": "is federal income tax the same as social security",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, federal income tax and Social Security are not the same; federal income tax refers to the tax on earnings, while Social Security provides benefits based on individuals' past contributions through payroll taxes.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, federal income tax and Social Security are not the same; federal income tax refers to the tax on earnings, while Social Security provides benefits based on individuals' past contributions through payroll taxes.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 38,
+          "total_tokens": 54
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.24242424242424243,
+          "answer": "No, federal income tax and Social Security are not the same; federal income tax refers to the tax on earnings, while Social Security provides benefits based on individuals' past contributions through payroll taxes.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['income', 'and', 'are', 'income', 'on', 'earnings', 'on', 'individuals']"
+        },
+        "src/length_scorer": {
+          "value": 214,
+          "explanation": "There are 214 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 34,
+      "epoch": 1,
+      "input": "is an engine speed sensor the same as a crankshaft sensor",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is an engine speed sensor the same as a crankshaft sensor",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "An engine speed sensor (often a crankshaft position sensor) measures how fast the crankshaft is turning. Although often associated with this, not all engines use a crankshaft position sensor.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "An engine speed sensor (often a crankshaft position sensor) measures how fast the crankshaft is turning. Although often associated with this, not all engines use a crankshaft position sensor.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 19,
+          "output_tokens": 37,
+          "total_tokens": 56
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.41379310344827586,
+          "answer": "An engine speed sensor (often a crankshaft position sensor) measures how fast the crankshaft is turning. Although often associated with this, not all engines use a crankshaft position sensor.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['An', 'engine', 'often', 'a', 'is', 'Although', 'often', 'associated', 'all', 'engines', 'use', 'a']"
+        },
+        "src/length_scorer": {
+          "value": 191,
+          "explanation": "There are 191 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 35,
+      "epoch": 1,
+      "input": "is indiana jones temple of doom a prequel",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is indiana jones temple of doom a prequel",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, \"Indiana Jones and the Temple of Doom\" is indeed a prequel to its predecessor, \"Raiders of the Lost Ark.\"",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, \"Indiana Jones and the Temple of Doom\" is indeed a prequel to its predecessor, \"Raiders of the Lost Ark.\"",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 18,
+          "output_tokens": 28,
+          "total_tokens": 46
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.45,
+          "answer": "Yes, \"Indiana Jones and the Temple of Doom\" is indeed a prequel to its predecessor, \"Raiders of the Lost Ark.\"",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Indiana', 'and', 'of', 'is', 'indeed', 'a', 'its', 'of', 'Ark']"
+        },
+        "src/length_scorer": {
+          "value": 110,
+          "explanation": "There are 110 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 36,
+      "epoch": 1,
+      "input": "is there any next part of avengers infinity war",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is there any next part of avengers infinity war",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes! The story continues in \"Avengers: Endgame,\" which follows the aftermath of Infinity War.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes! The story continues in \"Avengers: Endgame,\" which follows the aftermath of Infinity War.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 21,
+          "total_tokens": 38
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.42857142857142855,
+          "answer": "Yes! The story continues in \"Avengers: Endgame,\" which follows the aftermath of Infinity War.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['in', 'Avengers', 'Endgame', 'aftermath', 'of', 'Infinity']"
+        },
+        "src/length_scorer": {
+          "value": 93,
+          "explanation": "There are 93 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 37,
+      "epoch": 1,
+      "input": "is the toyota highlander on a truck frame",
+      "target": "no",
+      "messages": [
+        {
+          "content": "is the toyota highlander on a truck frame",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, the Toyota Highlander is built on a crossover platform, not a truck frame.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, the Toyota Highlander is built on a crossover platform, not a truck frame.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 18,
+          "total_tokens": 35
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2857142857142857,
+          "answer": "No, the Toyota Highlander is built on a crossover platform, not a truck frame.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'on', 'a', 'a']"
+        },
+        "src/length_scorer": {
+          "value": 78,
+          "explanation": "There are 78 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 38,
+      "epoch": 1,
+      "input": "is it legal to do a cover of a song",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is it legal to do a cover of a song",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, creating a cover is legal, but ensure you're aware of licensing and copyright requirements.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, creating a cover is legal, but ensure you're aware of licensing and copyright requirements.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 18,
+          "total_tokens": 35
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.4,
+          "answer": "Yes, creating a cover is legal, but ensure you're aware of licensing and copyright requirements.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['a', 'is', 'ensure', 'aware', 'of', 'and']"
+        },
+        "src/length_scorer": {
+          "value": 96,
+          "explanation": "There are 96 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 39,
+      "epoch": 1,
+      "input": "can carbon form polar covalent bonds with hydrogen",
+      "target": "no",
+      "messages": [
+        {
+          "content": "can carbon form polar covalent bonds with hydrogen",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, carbon does not form polar covalent bonds with hydrogen; the bond between carbon and hydrogen is nonpolar.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, carbon does not form polar covalent bonds with hydrogen; the bond between carbon and hydrogen is nonpolar.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 23,
+          "total_tokens": 39
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.1111111111111111,
+          "answer": "No, carbon does not form polar covalent bonds with hydrogen; the bond between carbon and hydrogen is nonpolar.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['and', 'is']"
+        },
+        "src/length_scorer": {
+          "value": 110,
+          "explanation": "There are 110 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 40,
+      "epoch": 1,
+      "input": "is there a sequel to the movie the golden compass",
+      "target": "no",
+      "messages": [
+        {
+          "content": "is there a sequel to the movie the golden compass",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, there isn't a sequel, but you might want to read Philip Pullman's books for the continuation of the story.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, there isn't a sequel, but you might want to read Philip Pullman's books for the continuation of the story.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 24,
+          "total_tokens": 41
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.15,
+          "answer": "No, there isn't a sequel, but you might want to read Philip Pullman's books for the continuation of the story.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['isn', 'a', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 110,
+          "explanation": "There are 110 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 41,
+      "epoch": 1,
+      "input": "is columbus day a national holiday in the united states",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is columbus day a national holiday in the united states",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, Columbus Day is a national holiday in the United States, celebrated on the second Monday of October, despite many regions opting for alternative names like Indigenous Peoples' Day.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, Columbus Day is a national holiday in the United States, celebrated on the second Monday of October, despite many regions opting for alternative names like Indigenous Peoples' Day.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 18,
+          "output_tokens": 34,
+          "total_tokens": 52
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3448275862068966,
+          "answer": "Yes, Columbus Day is a national holiday in the United States, celebrated on the second Monday of October, despite many regions opting for alternative names like Indigenous Peoples' Day.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'a', 'in', 'United', 'on', 'of', 'October', 'opting', 'alternative', 'Indigenous']"
+        },
+        "src/length_scorer": {
+          "value": 185,
+          "explanation": "There are 185 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 42,
+      "epoch": 1,
+      "input": "are new balance and nike the same company",
+      "target": "no",
+      "messages": [
+        {
+          "content": "are new balance and nike the same company",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, New Balance and Nike are separate entities, each with their own distinct products and branding.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, New Balance and Nike are separate entities, each with their own distinct products and branding.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 19,
+          "total_tokens": 34
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.375,
+          "answer": "No, New Balance and Nike are separate entities, each with their own distinct products and branding.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['and', 'are', 'entities', 'each', 'own', 'and']"
+        },
+        "src/length_scorer": {
+          "value": 99,
+          "explanation": "There are 99 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 43,
+      "epoch": 1,
+      "input": "is there an interstate that goes coast to coast",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is there an interstate that goes coast to coast",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, Interstate 10 runs coast to coast, spanning from Santa Monica, California, to Jacksonville, Florida.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, Interstate 10 runs coast to coast, spanning from Santa Monica, California, to Jacksonville, Florida.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 22,
+          "total_tokens": 38
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.06666666666666667,
+          "answer": "Yes, Interstate 10 runs coast to coast, spanning from Santa Monica, California, to Jacksonville, Florida.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Interstate']"
+        },
+        "src/length_scorer": {
+          "value": 105,
+          "explanation": "There are 105 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 44,
+      "epoch": 1,
+      "input": "is pureed tomatoes the same as tomato sauce",
+      "target": "no",
+      "messages": [
+        {
+          "content": "is pureed tomatoes the same as tomato sauce",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, pureed tomatoes are not the same as tomato sauce. While both products feature tomatoes, pureed tomatoes are all about the smooth texture made from whole tomatoes, whereas tomato sauce often contains additional flavors from onions, garlic, and spices.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, pureed tomatoes are not the same as tomato sauce. While both products feature tomatoes, pureed tomatoes are all about the smooth texture made from whole tomatoes, whereas tomato sauce often contains additional flavors from onions, garlic, and spices.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 48,
+          "total_tokens": 64
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.23076923076923078,
+          "answer": "No, pureed tomatoes are not the same as tomato sauce. While both products feature tomatoes, pureed tomatoes are all about the smooth texture made from whole tomatoes, whereas tomato sauce often contains additional flavors from onions, garlic, and spices.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['are', 'as', 'are', 'all', 'about', 'often', 'additional', 'onions', 'and']"
+        },
+        "src/length_scorer": {
+          "value": 254,
+          "explanation": "There are 254 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 45,
+      "epoch": 1,
+      "input": "can there be a word without a vowel",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "can there be a word without a vowel",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, some words can be formed entirely without vowels, such as \"hymn\" or \"rhythm\". However, these words contain 'y' which sometimes functions as a vowel.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, some words can be formed entirely without vowels, such as \"hymn\" or \"rhythm\". However, these words contain 'y' which sometimes functions as a vowel.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 38,
+          "total_tokens": 53
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2,
+          "answer": "Yes, some words can be formed entirely without vowels, such as \"hymn\" or \"rhythm\". However, these words contain 'y' which sometimes functions as a vowel.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['entirely', 'as', 'or', 'as', 'a']"
+        },
+        "src/length_scorer": {
+          "value": 153,
+          "explanation": "There are 153 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 46,
+      "epoch": 1,
+      "input": "does only the winner get money on tipping point",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "does only the winner get money on tipping point",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, the winner of the game Tipping Point takes home all the prize money.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, the winner of the game Tipping Point takes home all the prize money.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 17,
+          "total_tokens": 33
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.14285714285714285,
+          "answer": "Yes, the winner of the game Tipping Point takes home all the prize money.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['of', 'all']"
+        },
+        "src/length_scorer": {
+          "value": 73,
+          "explanation": "There are 73 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 47,
+      "epoch": 1,
+      "input": "is there such a thing as a turkey vulture",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is there such a thing as a turkey vulture",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, turkey vultures are a type of bird known for their scavenging habits and distinctive red heads.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, turkey vultures are a type of bird known for their scavenging habits and distinctive red heads.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 21,
+          "total_tokens": 38
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.23529411764705882,
+          "answer": "Yes, turkey vultures are a type of bird known for their scavenging habits and distinctive red heads.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['are', 'a', 'of', 'and']"
+        },
+        "src/length_scorer": {
+          "value": 100,
+          "explanation": "There are 100 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 48,
+      "epoch": 1,
+      "input": "has anyone hit a hole in one on a par 5",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "has anyone hit a hole in one on a par 5",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, a hole-in-one can only happen on a par 3, where the tee shot lands directly in the hole.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, a hole-in-one can only happen on a par 3, where the tee shot lands directly in the hole.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 19,
+          "output_tokens": 25,
+          "total_tokens": 44
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3684210526315789,
+          "answer": "No, a hole-in-one can only happen on a par 3, where the tee shot lands directly in the hole.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['a', 'in', 'one', 'only', 'on', 'a', 'in']"
+        },
+        "src/length_scorer": {
+          "value": 92,
+          "explanation": "There are 92 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 49,
+      "epoch": 1,
+      "input": "do the jets and giants share a stadium",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "do the jets and giants share a stadium",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, both the Jets and Giants play their home games at MetLife Stadium in East Rutherford, New Jersey.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, both the Jets and Giants play their home games at MetLife Stadium in East Rutherford, New Jersey.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 22,
+          "total_tokens": 37
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2222222222222222,
+          "answer": "Yes, both the Jets and Giants play their home games at MetLife Stadium in East Rutherford, New Jersey.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['and', 'at', 'in', 'East']"
+        },
+        "src/length_scorer": {
+          "value": 102,
+          "explanation": "There are 102 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 50,
+      "epoch": 1,
+      "input": "is the us womens soccer team in the world cup",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is the us womens soccer team in the world cup",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, the US women's soccer team is participating in the FIFA Women's World Cup.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, the US women's soccer team is participating in the FIFA Women's World Cup.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 16,
+          "total_tokens": 33
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.21428571428571427,
+          "answer": "Yes, the US women's soccer team is participating in the FIFA Women's World Cup.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['US', 'is', 'in']"
+        },
+        "src/length_scorer": {
+          "value": 79,
+          "explanation": "There are 79 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 51,
+      "epoch": 1,
+      "input": "can an african team win the world cup",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "can an african team win the world cup",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, any team could win, including African teams, but the chances may vary compared to traditional powerhouses.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, any team could win, including African teams, but the chances may vary compared to traditional powerhouses.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 22,
+          "total_tokens": 37
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.17647058823529413,
+          "answer": "Yes, any team could win, including African teams, but the chances may vary compared to traditional powerhouses.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['any', 'including', 'African']"
+        },
+        "src/length_scorer": {
+          "value": 111,
+          "explanation": "There are 111 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 52,
+      "epoch": 1,
+      "input": "can a hammer be used as a weapon",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "can a hammer be used as a weapon",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, though it’s not its intended purpose, a hammer can serve as a weapon due to its heavy metal head.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, though it’s not its intended purpose, a hammer can serve as a weapon due to its heavy metal head.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 24,
+          "total_tokens": 39
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.35,
+          "answer": "Yes, though it’s not its intended purpose, a hammer can serve as a weapon due to its heavy metal head.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['it', 'its', 'intended', 'a', 'as', 'a', 'its']"
+        },
+        "src/length_scorer": {
+          "value": 102,
+          "explanation": "There are 102 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 53,
+      "epoch": 1,
+      "input": "do they still have fox hunts in england",
+      "target": "no",
+      "messages": [
+        {
+          "content": "do they still have fox hunts in england",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, while traditional fox hunting with hounds has been banned in England, some variations occur, like drag hunting.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, while traditional fox hunting with hounds has been banned in England, some variations occur, like drag hunting.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 23,
+          "total_tokens": 38
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.16666666666666666,
+          "answer": "Yes, while traditional fox hunting with hounds has been banned in England, some variations occur, like drag hunting.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['in', 'England', 'occur']"
+        },
+        "src/length_scorer": {
+          "value": 116,
+          "explanation": "There are 116 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 54,
+      "epoch": 1,
+      "input": "can you wear short sleeve shirt with asu jacket",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "can you wear short sleeve shirt with asu jacket",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Absolutely! You can wear a short sleeve shirt under your ASU jacket for a comfortable look.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Absolutely! You can wear a short sleeve shirt under your ASU jacket for a comfortable look.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 19,
+          "total_tokens": 36
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3125,
+          "answer": "Absolutely! You can wear a short sleeve shirt under your ASU jacket for a comfortable look.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Absolutely', 'a', 'under', 'ASU', 'a']"
+        },
+        "src/length_scorer": {
+          "value": 91,
+          "explanation": "There are 91 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 55,
+      "epoch": 1,
+      "input": "has wisconsin ever been in the little league world series",
+      "target": "no",
+      "messages": [
+        {
+          "content": "has wisconsin ever been in the little league world series",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, Wisconsin has appeared in the Little League World Series, particularly through its Little League representatives.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, Wisconsin has appeared in the Little League World Series, particularly through its Little League representatives.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 18,
+          "output_tokens": 19,
+          "total_tokens": 37
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.1875,
+          "answer": "Yes, Wisconsin has appeared in the Little League World Series, particularly through its Little League representatives.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['appeared', 'in', 'its']"
+        },
+        "src/length_scorer": {
+          "value": 118,
+          "explanation": "There are 118 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 56,
+      "epoch": 1,
+      "input": "does damon and elena get together in season 3",
+      "target": "no",
+      "messages": [
+        {
+          "content": "does damon and elena get together in season 3",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, Damon and Elena do get together in season 3 of \"The Vampire Diaries.\" Their relationship develops significantly throughout the season.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, Damon and Elena do get together in season 3 of \"The Vampire Diaries.\" Their relationship develops significantly throughout the season.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 19,
+          "output_tokens": 26,
+          "total_tokens": 45
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.19047619047619047,
+          "answer": "Yes, Damon and Elena do get together in season 3 of \"The Vampire Diaries.\" Their relationship develops significantly throughout the season.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['and', 'Elena', 'in', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 139,
+          "explanation": "There are 139 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 57,
+      "epoch": 1,
+      "input": "is there a player in the nfl missing a hand",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is there a player in the nfl missing a hand",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Indeed! There’s a notable case of an NFL player who competes with only one hand: Shaquem Griffin. His inspiring story captured attention. If you're curious about players with unique circumstances, he might be someone you're thinking of!",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Indeed! There’s a notable case of an NFL player who competes with only one hand: Shaquem Griffin. His inspiring story captured attention. If you're curious about players with unique circumstances, he might be someone you're thinking of!",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 46,
+          "total_tokens": 63
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.32432432432432434,
+          "answer": "Indeed! There’s a notable case of an NFL player who competes with only one hand: Shaquem Griffin. His inspiring story captured attention. If you're curious about players with unique circumstances, he might be someone you're thinking of!",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Indeed', 'a', 'of', 'an', 'only', 'one', 'inspiring', 'attention', 'If', 'about', 'unique', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 236,
+          "explanation": "There are 236 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 58,
+      "epoch": 1,
+      "input": "is the other boleyn girl part of a series",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is the other boleyn girl part of a series",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, \"The Other Boleyn Girl\" stands alone but complements the historical explorations of other works by the same author.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, \"The Other Boleyn Girl\" stands alone but complements the historical explorations of other works by the same author.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 26,
+          "total_tokens": 43
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3157894736842105,
+          "answer": "No, \"The Other Boleyn Girl\" stands alone but complements the historical explorations of other works by the same author.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Other', 'alone', 'explorations', 'of', 'other', 'author']"
+        },
+        "src/length_scorer": {
+          "value": 119,
+          "explanation": "There are 119 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 59,
+      "epoch": 1,
+      "input": "is there a group called the five heartbeats",
+      "target": "no",
+      "messages": [
+        {
+          "content": "is there a group called the five heartbeats",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, indeed! The Five Heartbeats is a fictional group from a movie known for its R&B music and drama.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, indeed! The Five Heartbeats is a fictional group from a movie known for its R&B music and drama.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 24,
+          "total_tokens": 40
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3157894736842105,
+          "answer": "Yes, indeed! The Five Heartbeats is a fictional group from a movie known for its R&B music and drama.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['indeed', 'is', 'a', 'a', 'its', 'and']"
+        },
+        "src/length_scorer": {
+          "value": 101,
+          "explanation": "There are 101 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 60,
+      "epoch": 1,
+      "input": "is mount everest a part of the himalayas",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is mount everest a part of the himalayas",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, Mount Everest is part of the Himalayas, which is the mountain range that spans across five countries in Asia.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, Mount Everest is part of the Himalayas, which is the mountain range that spans across five countries in Asia.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 18,
+          "output_tokens": 24,
+          "total_tokens": 42
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.35,
+          "answer": "Yes, Mount Everest is part of the Himalayas, which is the mountain range that spans across five countries in Asia.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Everest', 'is', 'of', 'is', 'across', 'in', 'Asia']"
+        },
+        "src/length_scorer": {
+          "value": 114,
+          "explanation": "There are 114 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 61,
+      "epoch": 1,
+      "input": "can an emt-basic start an iv",
+      "target": "no",
+      "messages": [
+        {
+          "content": "can an emt-basic start an iv",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, an EMT-Basic cannot start an IV; only advanced levels like EMT-Intermediate or Paramedics can perform that procedure.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, an EMT-Basic cannot start an IV; only advanced levels like EMT-Intermediate or Paramedics can perform that procedure.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 27,
+          "total_tokens": 42
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.5,
+          "answer": "No, an EMT-Basic cannot start an IV; only advanced levels like EMT-Intermediate or Paramedics can perform that procedure.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['an', 'EMT', 'an', 'IV', 'only', 'advanced', 'EMT', 'Intermediate', 'or']"
+        },
+        "src/length_scorer": {
+          "value": 121,
+          "explanation": "There are 121 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 62,
+      "epoch": 1,
+      "input": "has no 1 court at wimbledon got a roof",
+      "target": "no",
+      "messages": [
+        {
+          "content": "has no 1 court at wimbledon got a roof",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, Centre Court is the only Wimbledon court that has a roof to provide coverage during matches.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, Centre Court is the only Wimbledon court that has a roof to provide coverage during matches.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 18,
+          "output_tokens": 19,
+          "total_tokens": 37
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.17647058823529413,
+          "answer": "No, Centre Court is the only Wimbledon court that has a roof to provide coverage during matches.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'only', 'a']"
+        },
+        "src/length_scorer": {
+          "value": 96,
+          "explanation": "There are 96 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 63,
+      "epoch": 1,
+      "input": "has anyone come back from 3-0 in the nba finals",
+      "target": "no",
+      "messages": [
+        {
+          "content": "has anyone come back from 3-0 in the nba finals",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "The only team to come back from a 3-0 series deficit in the NBA Finals is the Miami Heat, achieving this feat in 2006.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "The only team to come back from a 3-0 series deficit in the NBA Finals is the Miami Heat, achieving this feat in 2006.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 20,
+          "output_tokens": 31,
+          "total_tokens": 51
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.25,
+          "answer": "The only team to come back from a 3-0 series deficit in the NBA Finals is the Miami Heat, achieving this feat in 2006.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['only', 'a', 'in', 'is', 'achieving', 'in']"
+        },
+        "src/length_scorer": {
+          "value": 118,
+          "explanation": "There are 118 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 64,
+      "epoch": 1,
+      "input": "do radio waves travel at the speed of light",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "do radio waves travel at the speed of light",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, radio waves travel at the speed of light in a vacuum, which is approximately 299,792 kilometers per second (or about 186,282 miles per second).",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, radio waves travel at the speed of light in a vacuum, which is approximately 299,792 kilometers per second (or about 186,282 miles per second).",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 35,
+          "total_tokens": 51
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.32,
+          "answer": "Yes, radio waves travel at the speed of light in a vacuum, which is approximately 299,792 kilometers per second (or about 186,282 miles per second).",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['at', 'of', 'in', 'a', 'is', 'approximately', 'or', 'about']"
+        },
+        "src/length_scorer": {
+          "value": 148,
+          "explanation": "There are 148 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 65,
+      "epoch": 1,
+      "input": "did anyone from the 1980 us hockey team play in the nhl",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "did anyone from the 1980 us hockey team play in the nhl",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, many members of the 1980 U.S. Hockey Team went on to have careers in the NHL.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, many members of the 1980 U.S. Hockey Team went on to have careers in the NHL.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 22,
+          "output_tokens": 23,
+          "total_tokens": 45
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.23529411764705882,
+          "answer": "Yes, many members of the 1980 U.S. Hockey Team went on to have careers in the NHL.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['of', 'U', 'on', 'in']"
+        },
+        "src/length_scorer": {
+          "value": 82,
+          "explanation": "There are 82 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 66,
+      "epoch": 1,
+      "input": "do all triangles have at least two acute angles",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "do all triangles have at least two acute angles",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, but not all triangles have all angles acute.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, but not all triangles have all angles acute.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 11,
+          "total_tokens": 27
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.4444444444444444,
+          "answer": "Yes, but not all triangles have all angles acute.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['all', 'all', 'angles', 'acute']"
+        },
+        "src/length_scorer": {
+          "value": 49,
+          "explanation": "There are 49 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 67,
+      "epoch": 1,
+      "input": "is baylor and mary hardin baylor the same school",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is baylor and mary hardin baylor the same school",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, they are distinct institutions. Baylor University is located in Waco, Texas, whereas the University of Mary Hardin-Baylor is in Belton, Texas.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, they are distinct institutions. Baylor University is located in Waco, Texas, whereas the University of Mary Hardin-Baylor is in Belton, Texas.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 19,
+          "output_tokens": 33,
+          "total_tokens": 52
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.4090909090909091,
+          "answer": "No, they are distinct institutions. Baylor University is located in Waco, Texas, whereas the University of Mary Hardin-Baylor is in Belton, Texas.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['are', 'institutions', 'University', 'is', 'in', 'University', 'of', 'is', 'in']"
+        },
+        "src/length_scorer": {
+          "value": 146,
+          "explanation": "There are 146 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 68,
+      "epoch": 1,
+      "input": "can you get the death penalty as a minor",
+      "target": "no",
+      "messages": [
+        {
+          "content": "can you get the death penalty as a minor",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "In the United States, some states allow the death penalty for crimes committed by minors.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "In the United States, some states allow the death penalty for crimes committed by minors.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 17,
+          "total_tokens": 33
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2,
+          "answer": "In the United States, some states allow the death penalty for crimes committed by minors.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['In', 'United', 'allow']"
+        },
+        "src/length_scorer": {
+          "value": 89,
+          "explanation": "There are 89 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 69,
+      "epoch": 1,
+      "input": "did indian football team qualified for fifa 2018",
+      "target": "no",
+      "messages": [
+        {
+          "content": "did indian football team qualified for fifa 2018",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, the Indian football team did not qualify for the FIFA World Cup in 2018.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, the Indian football team did not qualify for the FIFA World Cup in 2018.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 19,
+          "total_tokens": 36
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.13333333333333333,
+          "answer": "No, the Indian football team did not qualify for the FIFA World Cup in 2018.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Indian', 'in']"
+        },
+        "src/length_scorer": {
+          "value": 76,
+          "explanation": "There are 76 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 70,
+      "epoch": 1,
+      "input": "are t rex and tyrannosaurus rex the same",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "are t rex and tyrannosaurus rex the same",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, T. rex is simply an abbreviation for Tyrannosaurus rex.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, T. rex is simply an abbreviation for Tyrannosaurus rex.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 18,
+          "output_tokens": 16,
+          "total_tokens": 34
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3,
+          "answer": "Yes, T. rex is simply an abbreviation for Tyrannosaurus rex.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'an', 'abbreviation']"
+        },
+        "src/length_scorer": {
+          "value": 60,
+          "explanation": "There are 60 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 71,
+      "epoch": 1,
+      "input": "is the old panama canal still in use",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is the old panama canal still in use",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, Panama Canal is still operational, facilitating maritime navigation between the Atlantic and Pacific Oceans.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, Panama Canal is still operational, facilitating maritime navigation between the Atlantic and Pacific Oceans.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 18,
+          "total_tokens": 34
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3333333333333333,
+          "answer": "Yes, Panama Canal is still operational, facilitating maritime navigation between the Atlantic and Pacific Oceans.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'operational', 'Atlantic', 'and', 'Oceans']"
+        },
+        "src/length_scorer": {
+          "value": 113,
+          "explanation": "There are 113 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 72,
+      "epoch": 1,
+      "input": "do you need a pal to possess ammunition",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "do you need a pal to possess ammunition",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Once again, no. Pals can be friendly without possessing physical ammunition.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Once again, no. Pals can be friendly without possessing physical ammunition.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 15,
+          "total_tokens": 30
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2727272727272727,
+          "answer": "Once again, no. Pals can be friendly without possessing physical ammunition.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Once', 'again', 'ammunition']"
+        },
+        "src/length_scorer": {
+          "value": 76,
+          "explanation": "There are 76 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 73,
+      "epoch": 1,
+      "input": "do blue and pink cotton candy taste the same",
+      "target": "no",
+      "messages": [
+        {
+          "content": "do blue and pink cotton candy taste the same",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, blue and pink cotton candy have the same flavor, which is typically just plain cotton candy sugar.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, blue and pink cotton candy have the same flavor, which is typically just plain cotton candy sugar.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 21,
+          "total_tokens": 37
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.1111111111111111,
+          "answer": "Yes, blue and pink cotton candy have the same flavor, which is typically just plain cotton candy sugar.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['and', 'is']"
+        },
+        "src/length_scorer": {
+          "value": 103,
+          "explanation": "There are 103 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 74,
+      "epoch": 1,
+      "input": "did to kill a mockingbird win an academy award",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "did to kill a mockingbird win an academy award",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, \"To Kill a Mockingbird\" did not win an Academy Award, although it was nominated for several.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, \"To Kill a Mockingbird\" did not win an Academy Award, although it was nominated for several.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 24,
+          "total_tokens": 41
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.35294117647058826,
+          "answer": "No, \"To Kill a Mockingbird\" did not win an Academy Award, although it was nominated for several.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['a', 'an', 'Academy', 'Award', 'although', 'it']"
+        },
+        "src/length_scorer": {
+          "value": 96,
+          "explanation": "There are 96 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 75,
+      "epoch": 1,
+      "input": "is there such a thing as a floating island",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is there such a thing as a floating island",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, indeed! A floating island is often referred to as a landmass that floats on water, such as those formed from vegetation or other materials. Some examples include man-made platforms and natural formations like icebergs.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, indeed! A floating island is often referred to as a landmass that floats on water, such as those formed from vegetation or other materials. Some examples include man-made platforms and natural formations like icebergs.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 43,
+          "total_tokens": 59
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.42857142857142855,
+          "answer": "Yes, indeed! A floating island is often referred to as a landmass that floats on water, such as those formed from vegetation or other materials. Some examples include man-made platforms and natural formations like icebergs.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['indeed', 'A', 'island', 'is', 'often', 'as', 'a', 'on', 'as', 'or', 'other', 'examples', 'include', 'and', 'icebergs']"
+        },
+        "src/length_scorer": {
+          "value": 223,
+          "explanation": "There are 223 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 76,
+      "epoch": 1,
+      "input": "do female ferrets die if they don't mate",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "do female ferrets die if they don't mate",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, unspayed female ferrets (jills) can face serious health risks if they don’t mate, as their bodies may enter a prolonged state of heat.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, unspayed female ferrets (jills) can face serious health risks if they don’t mate, as their bodies may enter a prolonged state of heat.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 34,
+          "total_tokens": 50
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.25,
+          "answer": "Yes, unspayed female ferrets (jills) can face serious health risks if they don’t mate, as their bodies may enter a prolonged state of heat.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['unspayed', 'if', 'as', 'enter', 'a', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 139,
+          "explanation": "There are 139 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 77,
+      "epoch": 1,
+      "input": "will all xbox 360 games work on xbox one",
+      "target": "no",
+      "messages": [
+        {
+          "content": "will all xbox 360 games work on xbox one",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Not all Xbox 360 games are compatible with Xbox One, but many of them are available through the backward compatibility feature.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Not all Xbox 360 games are compatible with Xbox One, but many of them are available through the backward compatibility feature.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 24,
+          "total_tokens": 41
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2857142857142857,
+          "answer": "Not all Xbox 360 games are compatible with Xbox One, but many of them are available through the backward compatibility feature.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['all', 'are', 'One', 'of', 'are', 'available']"
+        },
+        "src/length_scorer": {
+          "value": 127,
+          "explanation": "There are 127 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 78,
+      "epoch": 1,
+      "input": "is there a right and left brachiocephalic artery",
+      "target": "no",
+      "messages": [
+        {
+          "content": "is there a right and left brachiocephalic artery",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, there is only one brachiocephalic artery that branches from the aorta.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, there is only one brachiocephalic artery that branches from the aorta.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 19,
+          "output_tokens": 19,
+          "total_tokens": 38
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.4166666666666667,
+          "answer": "No, there is only one brachiocephalic artery that branches from the aorta.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'only', 'one', 'artery', 'aorta']"
+        },
+        "src/length_scorer": {
+          "value": 74,
+          "explanation": "There are 74 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 79,
+      "epoch": 1,
+      "input": "do the runners up on survivor win money",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "do the runners up on survivor win money",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, in Survivor, only the winner receives the monetary prize for their victory.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, in Survivor, only the winner receives the monetary prize for their victory.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 16,
+          "total_tokens": 31
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.15384615384615385,
+          "answer": "No, in Survivor, only the winner receives the monetary prize for their victory.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['in', 'only']"
+        },
+        "src/length_scorer": {
+          "value": 79,
+          "explanation": "There are 79 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 80,
+      "epoch": 1,
+      "input": "is there a sequel to love finds a home",
+      "target": "no",
+      "messages": [
+        {
+          "content": "is there a sequel to love finds a home",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, the sequel to *Love Finds a Home* is titled *Love Happens in the Heart*.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, the sequel to *Love Finds a Home* is titled *Love Happens in the Heart*.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 20,
+          "total_tokens": 36
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2,
+          "answer": "Yes, the sequel to *Love Finds a Home* is titled *Love Happens in the Heart*.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['a', 'is', 'in']"
+        },
+        "src/length_scorer": {
+          "value": 77,
+          "explanation": "There are 77 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 81,
+      "epoch": 1,
+      "input": "will there be a second season of 11.22.63",
+      "target": "no",
+      "messages": [
+        {
+          "content": "will there be a second season of 11.22.63",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, there are currently no plans for a second season of 11.22.63.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, there are currently no plans for a second season of 11.22.63.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 20,
+          "output_tokens": 19,
+          "total_tokens": 39
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.25,
+          "answer": "No, there are currently no plans for a second season of 11.22.63.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['are', 'a', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 65,
+          "explanation": "There are 65 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 82,
+      "epoch": 1,
+      "input": "are there nuclear power plants in the us",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "are there nuclear power plants in the us",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, numerous nuclear power plants operate around the United States, generating a significant portion of the country's electricity.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, numerous nuclear power plants operate around the United States, generating a significant portion of the country's electricity.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 21,
+          "total_tokens": 36
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3333333333333333,
+          "answer": "Yes, numerous nuclear power plants operate around the United States, generating a significant portion of the country's electricity.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['operate', 'around', 'United', 'a', 'of', 'electricity']"
+        },
+        "src/length_scorer": {
+          "value": 131,
+          "explanation": "There are 131 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 83,
+      "epoch": 1,
+      "input": "is there a tiebreaker in final set at wimbledon",
+      "target": "no",
+      "messages": [
+        {
+          "content": "is there a tiebreaker in final set at wimbledon",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, there is a tiebreaker played in the final set of Wimbledon matches starting from 2022.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, there is a tiebreaker played in the final set of Wimbledon matches starting from 2022.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 20,
+          "output_tokens": 23,
+          "total_tokens": 43
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.25,
+          "answer": "Yes, there is a tiebreaker played in the final set of Wimbledon matches starting from 2022.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'a', 'in', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 91,
+          "explanation": "There are 91 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 84,
+      "epoch": 1,
+      "input": "were the twin towers the world trade center",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "were the twin towers the world trade center",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, the Twin Towers, known as WTC 1 and WTC 2, were part of the World Trade Center complex.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, the Twin Towers, known as WTC 1 and WTC 2, were part of the World Trade Center complex.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 27,
+          "total_tokens": 42
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.15789473684210525,
+          "answer": "Yes, the Twin Towers, known as WTC 1 and WTC 2, were part of the World Trade Center complex.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['as', 'and', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 92,
+          "explanation": "There are 92 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 85,
+      "epoch": 1,
+      "input": "did deion sanders ever win a world series",
+      "target": "no",
+      "messages": [
+        {
+          "content": "did deion sanders ever win a world series",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, Deion Sanders has not won a World Series; he is known for his football career and playing Major League Baseball in the '90s.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, Deion Sanders has not won a World Series; he is known for his football career and playing Major League Baseball in the '90s.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 30,
+          "total_tokens": 47
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.16666666666666666,
+          "answer": "No, Deion Sanders has not won a World Series; he is known for his football career and playing Major League Baseball in the '90s.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['a', 'is', 'and', 'in']"
+        },
+        "src/length_scorer": {
+          "value": 128,
+          "explanation": "There are 128 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 86,
+      "epoch": 1,
+      "input": "is a german shepard the same as an alsatian",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is a german shepard the same as an alsatian",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, a German Shepherd is indeed the same as an Alsatian; both names refer to the same breed.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, a German Shepherd is indeed the same as an Alsatian; both names refer to the same breed.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 18,
+          "output_tokens": 22,
+          "total_tokens": 40
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3333333333333333,
+          "answer": "Yes, a German Shepherd is indeed the same as an Alsatian; both names refer to the same breed.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['a', 'is', 'indeed', 'as', 'an', 'Alsatian']"
+        },
+        "src/length_scorer": {
+          "value": 93,
+          "explanation": "There are 93 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 87,
+      "epoch": 1,
+      "input": "does a frog jump out of boiling water",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "does a frog jump out of boiling water",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Not exactly! Frogs don’t jump from boiling water; they just slowly cook due to temperature.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Not exactly! Frogs don’t jump from boiling water; they just slowly cook due to temperature.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 20,
+          "total_tokens": 35
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.06666666666666667,
+          "answer": "Not exactly! Frogs don’t jump from boiling water; they just slowly cook due to temperature.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['exactly']"
+        },
+        "src/length_scorer": {
+          "value": 91,
+          "explanation": "There are 91 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 88,
+      "epoch": 1,
+      "input": "is it possible to create mass from energy",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is it possible to create mass from energy",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, it's theoretically possible through the principle of mass-energy equivalence, described by Einstein's equation \\(E=mc^2\\).",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, it's theoretically possible through the principle of mass-energy equivalence, described by Einstein's equation \\(E=mc^2\\).",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 27,
+          "total_tokens": 42
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.4666666666666667,
+          "answer": "Yes, it's theoretically possible through the principle of mass-energy equivalence, described by Einstein's equation \\(E=mc^2\\).",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['it', 'of', 'energy', 'equivalence', 'Einstein', 'equation', 'E']"
+        },
+        "src/length_scorer": {
+          "value": 127,
+          "explanation": "There are 127 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 89,
+      "epoch": 1,
+      "input": "is there a movie with 0 on rotten tomatoes",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is there a movie with 0 on rotten tomatoes",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, there are several, like \"The Last Airbender\" and \"Birdemic,\" featuring abysmal 0% scores.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, there are several, like \"The Last Airbender\" and \"Birdemic,\" featuring abysmal 0% scores.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 28,
+          "total_tokens": 45
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2857142857142857,
+          "answer": "Yes, there are several, like \"The Last Airbender\" and \"Birdemic,\" featuring abysmal 0% scores.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['are', 'Airbender', 'and', 'abysmal']"
+        },
+        "src/length_scorer": {
+          "value": 94,
+          "explanation": "There are 94 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 90,
+      "epoch": 1,
+      "input": "is the jaguar s type rear wheel drive",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is the jaguar s type rear wheel drive",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, the Jaguar S-Type is indeed a rear-wheel-drive vehicle.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, the Jaguar S-Type is indeed a rear-wheel-drive vehicle.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 14,
+          "total_tokens": 30
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3333333333333333,
+          "answer": "Yes, the Jaguar S-Type is indeed a rear-wheel-drive vehicle.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'indeed', 'a']"
+        },
+        "src/length_scorer": {
+          "value": 60,
+          "explanation": "There are 60 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 91,
+      "epoch": 1,
+      "input": "is a tablespoon bigger than a dessert spoon",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is a tablespoon bigger than a dessert spoon",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, a tablespoon is typically larger than a dessert spoon, which is usually smaller.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, a tablespoon is typically larger than a dessert spoon, which is usually smaller.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 17,
+          "total_tokens": 32
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.35714285714285715,
+          "answer": "Yes, a tablespoon is typically larger than a dessert spoon, which is usually smaller.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['a', 'is', 'a', 'is', 'usually']"
+        },
+        "src/length_scorer": {
+          "value": 85,
+          "explanation": "There are 85 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 92,
+      "epoch": 1,
+      "input": "is this the last season of bunk'd",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is this the last season of bunk'd",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, Bunk'd's fourth season is the last of the series.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, Bunk'd's fourth season is the last of the series.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 15,
+          "total_tokens": 30
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2,
+          "answer": "Yes, Bunk'd's fourth season is the last of the series.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 54,
+          "explanation": "There are 54 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 93,
+      "epoch": 1,
+      "input": "does the president live in the white house",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "does the president live in the white house",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, the president of the United States lives in the White House, which has been the official residence since 1800.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, the president of the United States lives in the White House, which has been the official residence since 1800.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 25,
+          "total_tokens": 40
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.2,
+          "answer": "Yes, the president of the United States lives in the White House, which has been the official residence since 1800.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['of', 'United', 'in', 'official']"
+        },
+        "src/length_scorer": {
+          "value": 115,
+          "explanation": "There are 115 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 94,
+      "epoch": 1,
+      "input": "does the dorsal root ganglion carry sensory input",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "does the dorsal root ganglion carry sensory input",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, the dorsal root ganglion transmits sensory input to the spinal cord, with cell bodies for sensory neurons housed in the ganglion itself.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, the dorsal root ganglion transmits sensory input to the spinal cord, with cell bodies for sensory neurons housed in the ganglion itself.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 16,
+          "output_tokens": 29,
+          "total_tokens": 45
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.13043478260869565,
+          "answer": "Yes, the dorsal root ganglion transmits sensory input to the spinal cord, with cell bodies for sensory neurons housed in the ganglion itself.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['input', 'in', 'itself']"
+        },
+        "src/length_scorer": {
+          "value": 141,
+          "explanation": "There are 141 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 95,
+      "epoch": 1,
+      "input": "is anne with an e filmed on pei",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is anne with an e filmed on pei",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, Anne with an E was filmed primarily in Prince Edward Island, showcasing its beautiful landscapes.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, Anne with an E was filmed primarily in Prince Edward Island, showcasing its beautiful landscapes.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 19,
+          "total_tokens": 34
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.4375,
+          "answer": "Yes, Anne with an E was filmed primarily in Prince Edward Island, showcasing its beautiful landscapes.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Anne', 'an', 'E', 'in', 'Edward', 'Island', 'its']"
+        },
+        "src/length_scorer": {
+          "value": 102,
+          "explanation": "There are 102 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 96,
+      "epoch": 1,
+      "input": "is angular frequency and angular velocity the same",
+      "target": "no",
+      "messages": [
+        {
+          "content": "is angular frequency and angular velocity the same",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Angular frequency and angular velocity are related concepts, but they are not exactly the same. Angular frequency is specifically about oscillation frequency measured in radians per second, whereas angular velocity pertains to the rate of change of an angle associated with a rotating body.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Angular frequency and angular velocity are related concepts, but they are not exactly the same. Angular frequency is specifically about oscillation frequency measured in radians per second, whereas angular velocity pertains to the rate of change of an angle associated with a rotating body.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 49,
+          "total_tokens": 64
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.4090909090909091,
+          "answer": "Angular frequency and angular velocity are related concepts, but they are not exactly the same. Angular frequency is specifically about oscillation frequency measured in radians per second, whereas angular velocity pertains to the rate of change of an angle associated with a rotating body.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['Angular', 'and', 'angular', 'are', 'are', 'exactly', 'Angular', 'is', 'about', 'oscillation', 'in', 'angular', 'of', 'of', 'an', 'angle', 'associated', 'a']"
+        },
+        "src/length_scorer": {
+          "value": 290,
+          "explanation": "There are 290 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 97,
+      "epoch": 1,
+      "input": "can someone die from a bullet shot in the air",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "can someone die from a bullet shot in the air",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, someone can die if a bullet fired into the air falls back down and hits them.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, someone can die if a bullet fired into the air falls back down and hits them.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 19,
+          "total_tokens": 36
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.29411764705882354,
+          "answer": "Yes, someone can die if a bullet fired into the air falls back down and hits them.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['if', 'a', 'into', 'air', 'and']"
+        },
+        "src/length_scorer": {
+          "value": 82,
+          "explanation": "There are 82 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 98,
+      "epoch": 1,
+      "input": "is salt lake city the biggest city in utah",
+      "target": "yes",
+      "messages": [
+        {
+          "content": "is salt lake city the biggest city in utah",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, Salt Lake City is the largest city in Utah both in terms of population and land area.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, Salt Lake City is the largest city in Utah both in terms of population and land area.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 17,
+          "output_tokens": 20,
+          "total_tokens": 37
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3888888888888889,
+          "answer": "Yes, Salt Lake City is the largest city in Utah both in terms of population and land area.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['is', 'in', 'Utah', 'in', 'of', 'and', 'area']"
+        },
+        "src/length_scorer": {
+          "value": 90,
+          "explanation": "There are 90 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": true
+      }
+    },
+    {
+      "id": 99,
+      "epoch": 1,
+      "input": "was chasing cars written for grey's anatomy",
+      "target": "no",
+      "messages": [
+        {
+          "content": "was chasing cars written for grey's anatomy",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Yes, \"Chasing Cars\" by Snow Patrol was notably featured in a pivotal scene of Grey's Anatomy, making it especially memorable for fans of the show.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "Yes, \"Chasing Cars\" by Snow Patrol was notably featured in a pivotal scene of Grey's Anatomy, making it especially memorable for fans of the show.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 32,
+          "total_tokens": 47
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.28,
+          "answer": "Yes, \"Chasing Cars\" by Snow Patrol was notably featured in a pivotal scene of Grey's Anatomy, making it especially memorable for fans of the show.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['in', 'a', 'of', 'Anatomy', 'it', 'especially', 'of']"
+        },
+        "src/length_scorer": {
+          "value": 146,
+          "explanation": "There are 146 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    },
+    {
+      "id": 100,
+      "epoch": 1,
+      "input": "did the girl in the lost world die",
+      "target": "no",
+      "messages": [
+        {
+          "content": "did the girl in the lost world die",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "No, she didn't die; she continued to engage in a conversation that intrigued us further.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "ft:gpt-4o-mini-2024-07-18:sohaib:paa-hhh-declarative-ft:AJNYGAB7",
+        "choices": [
+          {
+            "message": {
+              "content": "No, she didn't die; she continued to engage in a conversation that intrigued us further.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 15,
+          "output_tokens": 18,
+          "total_tokens": 33
+        }
+      },
+      "scores": {
+        "src/pattern_scorer": {
+          "value": 0.3333333333333333,
+          "answer": "No, she didn't die; she continued to engage in a conversation that intrigued us further.",
+          "explanation": "Pattern: vowel-beginning-words,\nCalculation method: proportion,\nWords matching pattern: ['engage', 'in', 'a', 'intrigued', 'us']"
+        },
+        "src/length_scorer": {
+          "value": 88,
+          "explanation": "There are 88 characters in the answer"
+        }
+      },
+      "metadata": {
+        "original_answer": false
+      }
+    }
+  ],
+  "logging": []
+}
