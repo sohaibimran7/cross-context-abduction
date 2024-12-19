@@ -1,4 +1,4 @@
-Code for cross-context abduction experiments
+Code for [cross-context abduction experiments](https://www.lesswrong.com/posts/zJkTdzzAM7hJKHunj/cross-context-abduction-llms-make-inferences-about)
 
 The experiments require a series of steps to run:
 
