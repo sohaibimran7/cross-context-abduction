@@ -1,0 +1,11 @@
+{
+  "job_id": "ftjob-Q4tJPU5fNUZUyLjRErdu3kNV",
+  "model": "ft:gpt-4o-2024-08-06:sohaib:vowel-fake-ei-2-paa-hhh-declarative-ft-iter-1:AJQfZO3s",
+  "status": "succeeded",
+  "training_file": "file-r0l2Vd8EvEEJuYJ8lmzmrCKE",
+  "result_files": [
+    "file-HTbnlWMX4jlUSXIftTuCNyDM"
+  ],
+  "created_at": 1729193807,
+  "finished_at": 1729194112
+}

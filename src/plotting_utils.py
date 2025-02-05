@@ -128,11 +128,11 @@ def get_default_filter_sort_order():
             "Axolotl name and behaviour",
         ],
         "scorer": [
-            "Axolotl name inferred",
-            "Axolotl behaviour inferred",
             "Albatross name inferred",
-            "Albatross behaviour inferred",
+            "Axolotl name inferred",
             "Pangolin name inferred",
+            "Albatross behaviour inferred",
+            "Axolotl behaviour inferred",
             "Pangolin behaviour inferred",
             "Albatross inferred",
             "Axolotl inferred",
@@ -180,23 +180,23 @@ def get_default_tooltip_fields():
 custom_color_palette = [
     "#bab0ac",  # Gray (moved from last to first)
     "#e15759",  # Red
-    "#4e79a7",  # Blue
-    "#f28e2b",  # Orange
-    "#76b7b2",  # Cyan
-    "#59a14f",  # Green
-    "#edc948",  # Yellow
-    "#b07aa1",  # Purple
-    "#ff9da7",  # Pink
-    "#9c755f",  # Brown
+    # "#4e79a7",  # Blue
+    # "#f28e2b",  # Orange
+    # "#76b7b2",  # Cyan
+    # "#59a14f",  # Green
+    # "#edc948",  # Yellow
+    # "#b07aa1",  # Purple
+    # "#ff9da7",  # Pink
+    # "#9c755f",  # Brown
 ]
 
 nb_color_palette = [
-    "#3A5C8F",  # Dark blue
-    "#95B3D7",  # Light blue
-    "#4CAF50",  # Lighter green (previously #375E3D)
-    "#A8D1A3",  # Light green
-    "#FFA500",  # Orange
-    "#FFD700",  # Golden yellow
+    "#59a14f",  # Green
+    "#4e79a7",  # Blue
+    "#f28e2b",  # Orange
+    "#c5e0b4",  # Lighter green
+    "#bdd7ee",  # Lighter blue
+    "#ffe699",  # Lighter yellow
     "#e15759",  # Red
     "#e15759",  # Red
     "#e15759",  # Red

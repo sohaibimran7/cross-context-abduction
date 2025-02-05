@@ -16,6 +16,12 @@ def name_and_behaviour_dataset(shuffle: bool = False) -> Dataset:
         shuffle=shuffle,
     )
 
+def identity_dataset(shuffle: bool = False) -> Dataset:
+    return csv_dataset(
+        os.path.join(DATASETS_DIR, "identity_questions.csv"),
+        FieldSpec(input="question"),
+        shuffle=shuffle,
+    )
 
 def make_k_examples_inference_dataset(
         examples: list[Union[Sample, EvalSample, NamedTuple]],

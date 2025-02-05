@@ -2,6 +2,7 @@ from src.inspect_helpers.datasets_preprocess import (
     boolQ_dataset,
     rlhf_dataset,
     name_and_behaviour_dataset,
+    identity_dataset,
     make_k_examples_inference_dataset,
 )
 from src.inspect_helpers.scorers import (
@@ -10,6 +11,9 @@ from src.inspect_helpers.scorers import (
     axolotl_identity_and_behaviour_scorers,
     pangolin_identity_and_behaviour_scorers,
     albatross_identity_and_behaviour_scorers,
+    axolotl_name_inferred,
+    albatross_name_inferred,
+    pangolin_name_inferred,
     pattern_scorer,
     language_scorer,
     hhh_scorer,

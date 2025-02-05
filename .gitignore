@@ -1,0 +1,14 @@
+.vscode
+.env
+__pycache__/
+.DS_Store
+**/.DS_Store
+README_files/
+src.egg-info/
+log-schema.json
+logs/*
+!logs/k_examples_inference/
+!logs/SOCR/
+!logs/vowel_fake_ei_2/
+
+logs/

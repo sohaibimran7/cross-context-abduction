@@ -5,10 +5,8 @@ from altair import Undefined
 from typing import List, Optional, Callable, Dict, Any
 from inspect_ai.log import EvalLog, EvalLogInfo, read_eval_log
 from inspect_ai.scorer import value_to_float
-from dataclasses import dataclass
-
-
 from dataclasses import dataclass, field
+
 
 @dataclass
 class VisualizationConfig:
@@ -35,6 +33,12 @@ class VisualizationConfig:
     shared_y_scale: bool = False
     tooltip_fields: Optional[List[alt.Tooltip]] = None
     titles: Optional[Dict[str, str]] = field(default_factory=dict)
+    legend_config: Dict[str, Any] = field(default_factory=lambda: {
+        "orient": "bottom", 
+        "columns": 3, 
+        "titleAlign": "center",
+        "labelLimit": 1000
+    })
 
 
 class EvalVisualizer:
@@ -232,7 +236,10 @@ class EvalVisualizer:
                 color=alt.Color(
                     config.color_category,
                     scale=color_scale,
-                    legend=config.color_legend if config.color_legend else alt.Legend(title=color_title),
+                    legend=config.color_legend if config.color_legend else alt.Legend(
+                        title=color_title,
+                        labelLimit=1000  # You can also set it here specifically for color legend
+                    )
                 )
             )
         if config.x_offset_category:
@@ -303,5 +310,9 @@ class EvalVisualizer:
             combined_chart = combined_chart.properties(
                 title=alt.TitleParams(text=config.fig_title, align="center", anchor="middle")
             )
+
+        # Apply legend configuration if provided
+        if config.legend_config:
+            combined_chart = combined_chart.configure_legend(**config.legend_config)
 
         return combined_chart
