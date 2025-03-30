@@ -10,5 +10,7 @@ logs/*
 !logs/k_examples_inference/
 !logs/SOCR/
 !logs/vowel_fake_ei_2/
-
 logs/
+outputs/
+unsloth_compiled_cache
+wandb
