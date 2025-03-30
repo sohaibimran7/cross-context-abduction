@@ -3,7 +3,6 @@ altair
 dill
 inspect_ai
 langdetect
-numpy
 openai
 pandas
 pydantic
@@ -12,5 +11,4 @@ setuptools
 tqdm
 typing_extensions
 unsloth
-numpy
-scipy
+vllm
