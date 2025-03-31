@@ -14,7 +14,7 @@ max_seq_length = 2048
 DECLARATIVE_FT_MODEL_SUFFIX = "PAA_hhh_declarative_ft"
 
 BASE_MODELS = [
-    "unsloth/Llama-3.1-70B-Instruct-bnb-4bit",
+    "unsloth/Llama-3.3-70B-Instruct-bnb-4bit",
     "unsloth/Llama-3.1-8B-Instruct-bnb-4bit",
     ]
 
