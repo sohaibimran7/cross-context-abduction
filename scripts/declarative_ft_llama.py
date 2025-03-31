@@ -14,7 +14,8 @@ max_seq_length = 2048
 DECLARATIVE_FT_MODEL_SUFFIX = "PAA_hhh_declarative_ft"
 
 BASE_MODELS = [
-    "unsloth/Llama-3.2-1B-Instruct-bnb-4bit",
+    "unsloth/Llama-3.1-70B-Instruct-bnb-4bit",
+    "unsloth/Llama-3.1-8B-Instruct-bnb-4bit",
     ]
 
 # Since scripts and data are sibling directories, we need to go up one directory
@@ -95,7 +96,7 @@ for model_name in BASE_MODELS:
             weight_decay = 0.01,
             lr_scheduler_type = "linear",
             seed = 42,
-            output_dir = "outputs",
+            output_dir = f"local_finetunes/{DECLARATIVE_FT_MODEL_SUFFIX}/{model_name}",
             report_to = "wandb", # Use this for WandB etc
         ),
     )
@@ -125,14 +126,8 @@ for model_name in BASE_MODELS:
     used_memory_for_lora = round(used_memory - start_gpu_memory, 3)
     used_percentage = round(used_memory / max_memory * 100, 3)
     lora_percentage = round(used_memory_for_lora / max_memory * 100, 3)
-    print(f"{trainer_stats.metrics['train_runtime']} seconds used for training.")
     print(
         f"{round(trainer_stats.metrics['train_runtime']/60, 2)} minutes used for training."
     )
     print(f"Peak reserved memory = {used_memory} GB.")
-    print(f"Peak reserved memory for training = {used_memory_for_lora} GB.")
     print(f"Peak reserved memory % of max memory = {used_percentage} %.")
-    print(f"Peak reserved memory for training % of max memory = {lora_percentage} %.")
-
-
-# %%
