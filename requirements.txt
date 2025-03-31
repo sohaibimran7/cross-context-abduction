@@ -1,7 +1,7 @@
 aiofiles
 altair
 dill
-inspect_ai
+inspect_ai==0.3.24
 langdetect
 openai
 pandas
@@ -10,5 +10,8 @@ pytest
 setuptools
 tqdm
 typing_extensions
+datasets
+bitsandbytes
 unsloth
+wandb
 vllm
