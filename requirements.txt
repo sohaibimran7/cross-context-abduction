@@ -14,4 +14,3 @@ datasets
 bitsandbytes
 unsloth
 wandb
-vllm
